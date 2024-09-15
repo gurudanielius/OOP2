@@ -2,8 +2,10 @@
 // Created by danie on 13/09/2024.
 //
 #include <random>
+#include <iostream>
 #include <vector>
 using std::endl;
+extern std::string choice;
 using std::cout;
 using std::cin;
 using std::string;
