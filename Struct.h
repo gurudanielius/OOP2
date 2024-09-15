@@ -2,11 +2,12 @@
     struct Stud {
         string vardas;
         string pavarde;
-        vector<double> ND;        // Grades for homework
-        double vid;                    // Average grade
-        double med;                    // Median grade
-        double egz;                    // Exam grade
-        double rez;                    // Final result
+        extern std::string choice;
+        vector<double> ND;       
+        double vid;              
+        double med;              
+        double egz;              
+        double rez;              
     };
     void ived(Stud & Lok);
     void output(Stud Lok);
