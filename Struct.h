@@ -2,7 +2,6 @@
     struct Stud {
         string vardas;
         string pavarde;
-        extern std::string choice;
         vector<double> ND;       
         double vid;              
         double med;              
