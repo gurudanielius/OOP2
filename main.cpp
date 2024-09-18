@@ -23,38 +23,41 @@ int main() {
     }
     if(file_choice=="taip") {
         string tekstinis;
-        std::ifstream infile("C:/Users/danie/CLionProjects/vertinimas/kursiokai.txt");
-        string eilute;
-        if (!infile)
-        {
-            std::cerr << "Error: Failo atidaryti nepavyko." << endl;
+        try{
+            std::ifstream infile("C:/Users/danie/CLionProjects/vertinimas/kursiokai22.txt");
+            string eilute;
+            if (!infile.is_open()) {
+                throw std::ios_base::failure("Nepavyko atidaryti failo");
+            }
+            getline(infile,eilute);
+
+            int lines_num=0;
+            while(getline(infile,eilute)) {
+                lines_num++;
+                istringstream iss(eilute);
+                iss>>Temp.vardas>>Temp.pavarde;
+                Temp.ND.clear();
+                int ivertinimas;
+                for (int i = 0; i < 5; i++) {
+                    iss >> ivertinimas;
+                    Temp.ND.push_back(ivertinimas);
+                }
+                iss >> Temp.egz;
+                if (choice=="V") {
+                    vidurkis(Temp);
+                }
+                else {
+                    mediana(Temp);
+                }
+                v1.push_back(Temp);
+                val(Temp);
+            }
+            n=lines_num;
+            infile.close();
+        }
+        catch (const std::ios_base::failure& e) {
             std::terminate();
         }
-        getline(infile,eilute);
-
-        int lines_num=0;
-        while(getline(infile,eilute)) {
-            lines_num++;
-            istringstream iss(eilute);
-            iss>>Temp.vardas>>Temp.pavarde;
-            Temp.ND.clear();
-            int ivertinimas;
-            for (int i = 0; i < 5; i++) {
-                iss >> ivertinimas;
-                Temp.ND.push_back(ivertinimas);
-            }
-            iss >> Temp.egz;
-            if (choice=="V") {
-                vidurkis(Temp);
-            }
-            else {
-                mediana(Temp);
-            }
-            v1.push_back(Temp);
-            val(Temp);
-        }
-        n=lines_num;
-        infile.close();
     }
     //Isvedimas
     if (choice=="V") {
@@ -79,5 +82,6 @@ int main() {
 
     return 0;
 }
+
 
 
