@@ -34,7 +34,6 @@ void ived(Stud & Lok)
 
             }
         }
-        //TODO try-catch implementation
         for (int i=0;i<n;i++) {
             Lok.ND.push_back(rand()%10+1);
         }
@@ -45,16 +44,33 @@ void ived(Stud & Lok)
         cout<<"Pavarde: "<<endl;
         cin>>Lok.pavarde;
         double temp;
-        cout<<"Iveskite namu darbu rezultatus noredami uzbaigti paspauskite iveskite bet koki neskaitini simboli: "<<endl;
-        while (cin>>temp) {
-            Lok.ND.push_back(temp);
-        }
-        cin.clear();
-        //TODO error-handling
-        cout << "Iveskite egzamino rezultata: " << endl;
-        cin>>Lok.egz;
-    }
+        cout<<"Iveskite namu darbu rezultatus noredami uzbaigti iveskite -1: "<<endl;
+        while (true) {
 
+            if(cin>>temp && temp>=1 && temp<=10) {
+                Lok.ND.push_back(temp);
+            }
+            else if (temp==-1) {
+                break;
+            }
+            else {
+                cin.clear();
+                cout<<"Iveskite tinkama pazymi nuo 1 iki 10. Noredami uzbaigti iveskite -1"<<endl;
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+        }
+        cout << "Iveskite egzamino rezultata: " << endl;
+        while(true) {
+            if(cin>>Lok.egz && Lok.egz>=1 && Lok.egz<=10) {
+                break;
+            }
+            else {
+                cin.clear();
+                cout << "Reikia ivesti skaiciu nuo 1 iki 10. Iveskite egzamino rezultata." << endl;
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+        }
+    }
 
     //Pasirinkimas tarp vidurkio ir medianos
     if (choice=="V") {
