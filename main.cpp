@@ -30,8 +30,16 @@ int main() {
         }
     }
     if (file_choice=="ne") {
+
         cout<<"Iveskite studentu skaiciu"<<endl;
-        cin>>n;
+        while(true) {
+            if (cin>>n) {
+                break;
+            }
+            cin.clear();
+            cout << "Reikia ivesti skaiciu. Iveskite studentu skaiciu." << endl;
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         for (int i=0;i<n;i++) {
             ived(Temp);
             v1.push_back(Temp);
@@ -41,7 +49,7 @@ int main() {
     if(file_choice=="taip") {
         string tekstinis;
         try{
-            std::ifstream infile("C:/Users/danie/CLionProjects/vertinimas/kursiokai22.txt");
+            std::ifstream infile("C:/Users/danie/CLionProjects/vertinimas/kursiokai.txt");
             string eilute;
             if (!infile.is_open()) {
                 throw std::ios_base::failure("Nepavyko atidaryti failo");
