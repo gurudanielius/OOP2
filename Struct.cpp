@@ -85,12 +85,12 @@ void output(Stud Lok) {
     if (Lok.vid==0) {
         cout<<left<<setw(10)<<Lok.vardas << "    "
             <<left<<setw(10)<<Lok.pavarde << "    "
-            <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.med<<endl;
+            <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.rez<<endl;
     }
     else {
         cout<<left<<setw(10)<<Lok.vardas << "    "
             <<left<<setw(10)<<Lok.pavarde << "    "
-            <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.vid<<endl;
+            <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.rez<<endl;
     }
 
 
@@ -115,7 +115,7 @@ void output2(vector<Stud> Lok){
         for (int i=0;i<Lok.size();i++) {
             outputFile<<left<<setw(10)<<Lok.at(i).vardas << "    "
                 <<left<<setw(10)<<Lok.at(i).pavarde << "    "
-                <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.at(i).vid<<endl;
+                <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.at(i).rez<<endl;
         }
         outputFile.close();
         cout << "Data written to the file successfully." << std::endl;
@@ -137,6 +137,9 @@ void vidurkis(Stud &Lok) {
         Lok.vid+=Lok.ND.at(i);
     }
     Lok.vid=Lok.vid/Lok.ND.size();
+    if (Lok.ND.size()==0) {
+        Lok.vid=0;
+    }
     Lok.rez=0.4*Lok.vid+0.6*Lok.egz;
 }
 void mediana(Stud &Lok) {
