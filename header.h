@@ -10,6 +10,7 @@ using std::istringstream;
 using std::endl;
 extern std::string choice;
 using std::cout;
+using std::left;
 using std::cin;
 using std::string;
 using std::vector;
