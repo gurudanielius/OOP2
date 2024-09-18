@@ -25,7 +25,7 @@ void ived(Stud & Lok)
         cout<<"Pavarde: "<<endl;
         cin>>Lok.pavarde;
         double temp;
-        cout<<"Iveskite namu darbu rezultatus: "<<endl;
+        cout<<"Iveskite namu darbu rezultatus noredami uzbaigti paspauskite iveskite bet koki neskaitini simboli: "<<endl;
         while (cin>>temp) {
             Lok.ND.push_back(temp);
         }
