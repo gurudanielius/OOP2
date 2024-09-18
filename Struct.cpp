@@ -4,17 +4,37 @@ void ived(Stud & Lok)
 {
     cout << "Ar norite ivesti pazymius rankiniu budu, ar generuoti atsitiktinai? (Ivesti/Generuoti) " << endl;
     string method;
-    cin>>method;
+    while (true) {
+        cin>>method;
+
+        if (method=="Ivesti" || method=="Generuoti"||method=="ivesti"||method=="generuoti") {
+            break;
+        }
+        else {
+            cout<<"Neteisingas pasirinkimas, bandykite dar karta. Kaip norite ivesti pazymius\nGeneruoti/Ivesti?"<<endl;
+        }
+    }
     //Pasirinkimas ivesti/generuoti/nuskaityti
-    if (method=="Generuoti") {
+    if (method=="Generuoti"||method=="generuoti") {
         cout<<"Vardas: "<<endl;
         cin>>Lok.vardas;
         cout<<"Pavarde: "<<endl;
         cin>>Lok.pavarde;
         Lok.egz=rand()%10+1;
-        cout << "Iveskite pazymiu skaiciu: " << endl;
         int n;
-        cin>>n;
+        cout << "Iveskite pazymiu skaiciu: " << endl;
+        while (true) {
+            if(cin>>n) {
+                break;
+            }
+            else {
+                cin.clear();
+                cout << "Reikia ivesti skaiciu. Iveskite pazymiu skaiciu." << endl;
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            }
+        }
+        //TODO try-catch implementation
         for (int i=0;i<n;i++) {
             Lok.ND.push_back(rand()%10+1);
         }
@@ -30,6 +50,7 @@ void ived(Stud & Lok)
             Lok.ND.push_back(temp);
         }
         cin.clear();
+        //TODO error-handling
         cout << "Iveskite egzamino rezultata: " << endl;
         cin>>Lok.egz;
     }
@@ -39,13 +60,11 @@ void ived(Stud & Lok)
     if (choice=="V") {
         vidurkis(Lok);
     }
-    else {
+    if (choice=="M") {
 
         mediana(Lok);
     }
 }
-
-
 void output(Stud Lok) {
     if (Lok.vid==0) {
         cout<<setw(10)<<Lok.vardas << "    "
