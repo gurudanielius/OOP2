@@ -8,7 +8,17 @@ int main() {
     string file_choice;
 
     cout<<"Pasirinkite ka skaiciuoti: V - vidurki, M - mediana"<<endl;
-    cin>>choice;
+    while (true) {
+        cin>>choice;
+        if (choice=="V" || choice=="M") {
+            break;
+        }
+        else {
+            cout<<"Neteisingas pasirinkimas, bandykite dar karta. V-vidurkis, M-mediana"<<endl;
+        }
+    }
+
+
     cout << "Ar skaityti duomenis is failo? taip/ne" << endl;
     cin>>file_choice;
 
