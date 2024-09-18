@@ -1,11 +1,12 @@
 #include "header.h"
 #include "Struct.h"'
 string choice;
+
 int main() {
     vector<Stud> v1;
     Stud Temp;
     int n;
-    string file_choice;
+    string file_choice,output_choice;
 
     cout<<"Pasirinkite ka skaiciuoti: V - vidurki, M - mediana"<<endl;
     while (true) {
@@ -17,8 +18,6 @@ int main() {
             cout<<"Neteisingas pasirinkimas, bandykite dar karta. V-vidurkis, M-mediana"<<endl;
         }
     }
-
-
     cout << "Ar skaityti duomenis is failo? taip/ne" << endl;
     while (true) {
         cin>>file_choice;
@@ -30,7 +29,6 @@ int main() {
         }
     }
     if (file_choice=="ne") {
-
         cout<<"Iveskite studentu skaiciu"<<endl;
         while(true) {
             if (cin>>n) {
@@ -49,7 +47,7 @@ int main() {
     if(file_choice=="taip") {
         string tekstinis;
         try{
-            std::ifstream infile("C:/Users/danie/CLionProjects/vertinimas/kursiokai.txt");
+            std::ifstream infile("C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-v.pradin-/studentai10000000.txt");
             string eilute;
             if (!infile.is_open()) {
                 throw std::ios_base::failure("Nepavyko atidaryti failo");
@@ -85,27 +83,43 @@ int main() {
         }
     }
     //Isvedimas
-    if (choice=="V") {
-        cout <<left<<setw(10) << "Vardas" << "    "
-             <<left<<setw(10) << "Pavarde" << "    "
-             <<left<<setw(10) << "Galutinis (Vid.)" << endl;
+    cout<<"Ar norite isvesti i faila? taip/ne "<<endl;
+    while (true) {
+        cin>>output_choice;
+        if (output_choice=="taip" ||output_choice=="ne") {
+            break;
+        }
+        else {
+            cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
+        }
     }
-    else {
-        cout <<left<<setw(10) << "Vardas" << "    "
-             <<left<<setw(10) << "Pavarde" << "    "
-             <<left<<setw(10) << "Galutinis (Med.)" << endl;
+    if (file_choice=="ne") {
+        if (choice=="V") {
+            cout <<left<<setw(10) << "Vardas" << "    "
+                 <<left<<setw(10) << "Pavarde" << "    "
+                 <<left<<setw(10) << "Galutinis (Vid.)" << endl;
+        }
+        else {
+            cout <<left<<setw(10) << "Vardas" << "    "
+                 <<left<<setw(10) << "Pavarde" << "    "
+                 <<left<<setw(10) << "Galutinis (Med.)" << endl;
+        }
+        cout << "-----------------------------------------------" << endl;
+        sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+            return a.vardas < b.vardas;
+        });
+        for (int i=0;i<n;i++) {
+            output(v1.at(i));
+        }
     }
-    cout << "-----------------------------------------------" << endl;
-    sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
-        return a.vardas < b.vardas;
-    });
+        else {
+            output2(v1);
+            system("pause");
+            return 0;
+        }
+    }
 
-    for (int i=0;i<n;i++) {
-        output(v1.at(i));
-    }
-    system("pause");
-    return 0;
-}
+
 
 
 
