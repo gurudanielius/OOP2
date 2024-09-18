@@ -20,8 +20,15 @@ int main() {
 
 
     cout << "Ar skaityti duomenis is failo? taip/ne" << endl;
-    cin>>file_choice;
-
+    while (true) {
+        cin>>file_choice;
+        if (file_choice=="taip" || file_choice=="ne") {
+            break;
+        }
+        else {
+            cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
+        }
+    }
     if (file_choice=="ne") {
         cout<<"Iveskite studentu skaiciu"<<endl;
         cin>>n;
