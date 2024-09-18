@@ -1,121 +1,111 @@
-#include "Struct.h"
 #include "header.h"
-void ived(Stud & Lok)
-{
-    cout << "Ar norite ivesti pazymius rankiniu budu, ar generuoti atsitiktinai? (Ivesti/Generuoti) " << endl;
-    string method;
-    while (true) {
-        cin>>method;
+#include "Struct.h"'
+string choice;
+int main() {
+    vector<Stud> v1;
+    Stud Temp;
+    int n;
+    string file_choice;
 
-        if (method=="Ivesti" || method=="Generuoti"||method=="ivesti"||method=="generuoti") {
+    cout<<"Pasirinkite ka skaiciuoti: V - vidurki, M - mediana"<<endl;
+    while (true) {
+        cin>>choice;
+        if (choice=="V" || choice=="M") {
             break;
         }
         else {
-            cout<<"Neteisingas pasirinkimas, bandykite dar karta. Kaip norite ivesti pazymius\nGeneruoti/Ivesti?"<<endl;
+            cout<<"Neteisingas pasirinkimas, bandykite dar karta. V-vidurkis, M-mediana"<<endl;
         }
     }
-    //Pasirinkimas ivesti/generuoti/nuskaityti
-    if (method=="Generuoti"||method=="generuoti") {
-        cout<<"Vardas: "<<endl;
-        cin>>Lok.vardas;
-        cout<<"Pavarde: "<<endl;
-        cin>>Lok.pavarde;
-        Lok.egz=rand()%10+1;
-        int n;
-        cout << "Iveskite pazymiu skaiciu: " << endl;
-        while (true) {
-            if(cin>>n) {
+
+
+    cout << "Ar skaityti duomenis is failo? taip/ne" << endl;
+    while (true) {
+        cin>>file_choice;
+        if (file_choice=="taip" || file_choice=="ne") {
+            break;
+        }
+        else {
+            cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
+        }
+    }
+    if (file_choice=="ne") {
+
+        cout<<"Iveskite studentu skaiciu"<<endl;
+        while(true) {
+            if (cin>>n) {
                 break;
             }
-            else {
-                cin.clear();
-                cout << "Reikia ivesti skaiciu. Iveskite pazymiu skaiciu." << endl;
-                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-            }
+            cin.clear();
+            cout << "Reikia ivesti skaiciu. Iveskite studentu skaiciu." << endl;
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
         for (int i=0;i<n;i++) {
-            Lok.ND.push_back(rand()%10+1);
+            ived(Temp);
+            v1.push_back(Temp);
+            val(Temp);
         }
     }
-    else {
-        cout<<"Vardas: "<<endl;
-        cin>>Lok.vardas;
-        cout<<"Pavarde: "<<endl;
-        cin>>Lok.pavarde;
-        double temp;
-        cout<<"Iveskite namu darbu rezultatus noredami uzbaigti iveskite -1: "<<endl;
-        while (true) {
+    if(file_choice=="taip") {
+        string tekstinis;
+        try{
+            std::ifstream infile("C:/Users/danie/CLionProjects/vertinimas/kursiokai.txt");
+            string eilute;
+            if (!infile.is_open()) {
+                throw std::ios_base::failure("Nepavyko atidaryti failo");
+            }
+            getline(infile,eilute);
 
-            if(cin>>temp && temp>=1 && temp<=10) {
-                Lok.ND.push_back(temp);
+            int lines_num=0;
+            while(getline(infile,eilute)) {
+                lines_num++;
+                istringstream iss(eilute);
+                iss>>Temp.vardas>>Temp.pavarde;
+                Temp.ND.clear();
+                int ivertinimas;
+                for (int i = 0; i < 5; i++) {
+                    iss >> ivertinimas;
+                    Temp.ND.push_back(ivertinimas);
+                }
+                iss >> Temp.egz;
+                if (choice=="V") {
+                    vidurkis(Temp);
+                }
+                else {
+                    mediana(Temp);
+                }
+                v1.push_back(Temp);
+                val(Temp);
             }
-            else if (temp==-1) {
-                break;
-            }
-            else {
-                cin.clear();
-                cout<<"Iveskite tinkama pazymi nuo 1 iki 10. Noredami uzbaigti iveskite -1"<<endl;
-                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            }
+            n=lines_num;
+            infile.close();
         }
-        cout << "Iveskite egzamino rezultata: " << endl;
-        while(true) {
-            if(cin>>Lok.egz && Lok.egz>=1 && Lok.egz<=10) {
-                break;
-            }
-            else {
-                cin.clear();
-                cout << "Reikia ivesti skaiciu nuo 1 iki 10. Iveskite egzamino rezultata." << endl;
-                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            }
+        catch (const std::ios_base::failure& e) {
+            std::terminate();
         }
     }
-
-    //Pasirinkimas tarp vidurkio ir medianos
+    //Isvedimas
     if (choice=="V") {
-        vidurkis(Lok);
-    }
-    if (choice=="M") {
-
-        mediana(Lok);
-    }
-}
-void output(Stud Lok) {
-    if (Lok.vid==0) {
-        cout<<setw(10)<<Lok.vardas << "    "
-             <<setw(10)<<Lok.pavarde << "    "
-             <<setw(10)<<fixed<<setprecision(2)<<Lok.med<<endl;
+        cout <<left<<setw(10) << "Vardas" << "    "
+             <<left<<setw(10) << "Pavarde" << "    "
+             <<left<<setw(10) << "Galutinis (Vid.)" << endl;
     }
     else {
-        cout<<setw(10)<<Lok.vardas << "    "
-            <<setw(10)<<Lok.pavarde << "    "
-            <<setw(10)<<fixed<<setprecision(2)<<Lok.vid<<endl;
+        cout <<left<<setw(10) << "Vardas" << "    "
+             <<left<<setw(10) << "Pavarde" << "    "
+             <<left<<setw(10) << "Galutinis (Med.)" << endl;
     }
-}
-void val(Stud & Lok) {
-    Lok.vardas.clear();
-    Lok.pavarde.clear();
-    Lok.ND.clear();
-}
-void vidurkis(Stud &Lok) {
-    Lok.med=0;
-    Lok.vid=0;
-    for (int i=0;i<Lok.ND.size();i++) {
-        Lok.vid+=Lok.ND.at(i);
-    }
-    Lok.vid=Lok.vid/Lok.ND.size();
-    Lok.rez=0.4*Lok.vid+0.6*Lok.egz;
-}
-void mediana(Stud &Lok) {
-    Lok.vid=0;
-    sort(Lok.ND.begin(), Lok.ND.end());
-    if (Lok.ND.size()%2==0) {
-        Lok.med=(Lok.ND.at(Lok.ND.size()/2-1)+Lok.ND.at(Lok.ND.size()/2))/2;
-    }
-    else {
-        Lok.med=Lok.ND.at(Lok.ND.size()/2);
-    }
-    Lok.rez=0.4*Lok.med+0.6*Lok.egz;
+    cout << "-----------------------------------------------" << endl;
+    sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+        return a.vardas < b.vardas;
+    });
 
+    for (int i=0;i<n;i++) {
+        output(v1.at(i));
+    }
+    system("pause");
+    return 0;
 }
+
+
+
