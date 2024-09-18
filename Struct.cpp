@@ -92,7 +92,39 @@ void output(Stud Lok) {
             <<left<<setw(10)<<Lok.pavarde << "    "
             <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.vid<<endl;
     }
+
+
 }
+void output2(vector<Stud> Lok){
+    std::ofstream outputFile;
+    outputFile.open("C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-v.pradin-/rezultatai.txt");
+    if (choice=="V") {
+        outputFile<<left<<setw(10) << "Vardas" << "    "
+            <<left<<setw(10) << "Pavarde" << "    "
+            <<left<<setw(10) << "Galutinis (Vid.)" << endl;
+        outputFile << "-----------------------------------------------" << endl;
+
+    }
+    else {
+        outputFile<<left<<setw(10) << "Vardas" << "    "
+             <<left<<setw(10) << "Pavarde" << "    "
+             <<left<<setw(10) << "Galutinis (Med.)" << endl;
+    }
+
+    if (outputFile.is_open()) {
+        for (int i=0;i<Lok.size();i++) {
+            outputFile<<left<<setw(10)<<Lok.at(i).vardas << "    "
+                <<left<<setw(10)<<Lok.at(i).pavarde << "    "
+                <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.at(i).vid<<endl;
+        }
+        outputFile.close();
+        cout << "Data written to the file successfully." << std::endl;
+    }
+    else {
+        cout << "Unable to open the file!" << std::endl;
+    }
+}
+
 void val(Stud & Lok) {
     Lok.vardas.clear();
     Lok.pavarde.clear();
