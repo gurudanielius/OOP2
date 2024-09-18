@@ -86,25 +86,24 @@ int main() {
     }
     //Isvedimas
     if (choice=="V") {
-        cout << std::setw(10) << "Vardas" << "    "
-             << std::setw(10) << "Pavarde" << "    "
-             << std::setw(10) << "Galutinis (Vid.)" << endl;
+        cout <<left<<setw(10) << "Vardas" << "    "
+             <<left<<setw(10) << "Pavarde" << "    "
+             <<left<<setw(10) << "Galutinis (Vid.)" << endl;
     }
     else {
-        cout << std::setw(10) << "Vardas" << "    "
-             << std::setw(10) << "Pavarde" << "    "
-             << std::setw(10) << "Galutinis (Med.)" << endl;
+        cout <<left<<setw(10) << "Vardas" << "    "
+             <<left<<setw(10) << "Pavarde" << "    "
+             <<left<<setw(10) << "Galutinis (Med.)" << endl;
     }
     cout << "-----------------------------------------------" << endl;
-
+    sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+        return a.vardas < b.vardas;
+    });
 
     for (int i=0;i<n;i++) {
         output(v1.at(i));
     }
-
-
     system("pause");
-
     return 0;
 }
 
