@@ -93,7 +93,7 @@ int main() {
             cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
         }
     }
-    if (file_choice=="ne") {
+    if (output_choice=="ne") {
         if (choice=="V") {
             cout <<left<<setw(10) << "Vardas" << "    "
                  <<left<<setw(10) << "Pavarde" << "    "
