@@ -99,28 +99,29 @@ int main() {
     string sort_choice;
     cout<<"Ar norite isrusiuoti studentus pagal varda? taip/ne "<<endl;
     cin>>sort_choice;
-    if (output_choice=="ne") {
-        if (choice=="V") {
-            cout <<left<<setw(10) << "Vardas" << "    "
-                 <<left<<setw(10) << "Pavarde" << "    "
-                 <<left<<setw(10) << "Galutinis (Vid.)" << endl;
-        }
-        else {
-            cout <<left<<setw(10) << "Vardas" << "    "
-                 <<left<<setw(10) << "Pavarde" << "    "
-                 <<left<<setw(10) << "Galutinis (Med.)" << endl;
-        }
-        cout << "-----------------------------------------------" << endl;
         if (sort_choice=="taip") {
             sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
            return a.vardas < b.vardas;
              });
         }
-        if(sort_choice=="ne") {
+        else if(sort_choice=="ne") {
             sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
                 return a.pavarde < b.pavarde;
             });
         }
+
+        if (output_choice=="ne") {
+            if (choice=="V") {
+                cout <<left<<setw(10) << "Vardas" << "    "
+                     <<left<<setw(10) << "Pavarde" << "    "
+                     <<left<<setw(10) << "Galutinis (Vid.)" << endl;
+            }
+            else {
+                cout <<left<<setw(10) << "Vardas" << "    "
+                     <<left<<setw(10) << "Pavarde" << "    "
+                     <<left<<setw(10) << "Galutinis (Med.)" << endl;
+            }
+            cout << "-----------------------------------------------" << endl;
 
         for (int i=0;i<n;i++) {
             output(v1.at(i));
