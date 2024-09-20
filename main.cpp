@@ -1,5 +1,5 @@
 #include "header.h"
-#include "Struct.h"'
+#include "Struct.h"
 string choice;
 
 int main() {
@@ -47,7 +47,7 @@ int main() {
     if(file_choice=="taip") {
         string tekstinis;
         try{
-            std::ifstream infile("C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-v.pradin-/studentai10000000.txt");
+            std::ifstream infile("C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-0.1/kursiokai.txt");
             string eilute;
             if (!infile.is_open()) {
                 throw std::ios_base::failure("Nepavyko atidaryti failo");
@@ -93,6 +93,9 @@ int main() {
             cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
         }
     }
+    string sort_choice;
+    cout<<"Ar norite isrusiuoti studentus pagal varda? taip/ne "<<endl;
+    cin>>sort_choice;
     if (output_choice=="ne") {
         if (choice=="V") {
             cout <<left<<setw(10) << "Vardas" << "    "
@@ -105,9 +108,17 @@ int main() {
                  <<left<<setw(10) << "Galutinis (Med.)" << endl;
         }
         cout << "-----------------------------------------------" << endl;
-        sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
-            return a.vardas < b.vardas;
-        });
+        if (sort_choice=="taip") {
+            sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+           return a.vardas < b.vardas;
+             });
+        }
+        if(sort_choice=="ne") {
+            sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+                return a.pavarde < b.pavarde;
+            });
+        }
+
         for (int i=0;i<n;i++) {
             output(v1.at(i));
         }
