@@ -7,7 +7,7 @@ int main() {
     Stud Temp;
     int n;
     string file_choice,output_choice;
-
+    //Pasirinkimas skaiciuoti vidurki ar mediana
     cout<<"Pasirinkite ka skaiciuoti: V - vidurki, M - mediana"<<endl;
     while (true) {
         cin>>choice;
@@ -18,6 +18,7 @@ int main() {
             cout<<"Neteisingas pasirinkimas, bandykite dar karta. V-vidurkis, M-mediana"<<endl;
         }
     }
+    //Ivedimams
     cout << "Ar skaityti duomenis is failo? taip/ne" << endl;
     while (true) {
         cin>>file_choice;
@@ -28,6 +29,7 @@ int main() {
             cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
         }
     }
+    //Ivedimas ranka
     if (file_choice=="ne") {
         cout<<"Iveskite studentu skaiciu"<<endl;
         while(true) {
@@ -44,10 +46,11 @@ int main() {
             val(Temp);
         }
     }
+//Ivedimas is failo
     if(file_choice=="taip") {
         string tekstinis;
         try{
-            std::ifstream infile("C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-0.1/kursiokai.txt");
+            std::ifstream infile("kursiokai.txt");
             string eilute;
             if (!infile.is_open()) {
                 throw std::ios_base::failure("Nepavyko atidaryti failo");
