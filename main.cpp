@@ -128,9 +128,9 @@ int main() {
     }
         else {
             output2(v1);
-            system("pause");
-            return 0;
         }
+    system("pause");
+    return 0;
     }
 
 
