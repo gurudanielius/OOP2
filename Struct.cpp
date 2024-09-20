@@ -98,7 +98,7 @@ void output(Stud Lok) {
 }
 void output2(vector<Stud> Lok){
     std::ofstream outputFile;
-    outputFile.open("C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-0.1/rezultatai.txt");
+    outputFile.open("rezultatai.txt");
     if (choice=="V") {
         outputFile<<left<<setw(10) << "Vardas" << "    "
             <<left<<setw(10) << "Pavarde" << "    "
@@ -125,7 +125,6 @@ void output2(vector<Stud> Lok){
         cout << "Unable to open the file!" << std::endl;
     }
 }
-
 void val(Stud & Lok) {
     Lok.vardas.clear();
     Lok.pavarde.clear();
