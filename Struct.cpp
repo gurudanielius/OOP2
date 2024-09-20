@@ -70,6 +70,7 @@ void ived(Stud & Lok)
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
         }
+        cout<<"*********************************"<<endl;
     }
 
     //Pasirinkimas tarp vidurkio ir medianos
@@ -97,7 +98,7 @@ void output(Stud Lok) {
 }
 void output2(vector<Stud> Lok){
     std::ofstream outputFile;
-    outputFile.open("C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-v.pradin-/rezultatai.txt");
+    outputFile.open("C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-0.1/rezultatai.txt");
     if (choice=="V") {
         outputFile<<left<<setw(10) << "Vardas" << "    "
             <<left<<setw(10) << "Pavarde" << "    "
