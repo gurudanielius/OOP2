@@ -50,21 +50,28 @@ int main() {
     if(file_choice=="taip") {
         string tekstinis;
         try{
-            std::ifstream infile("kursiokai.txt");
+            std::ifstream infile("C:/Users/danie/OneDrive/Documents/OOP-0.1/kursiokai.txt");
             string eilute;
             if (!infile.is_open()) {
                 throw std::ios_base::failure("Nepavyko atidaryti failo");
             }
-            getline(infile,eilute);
 
+            getline(infile,eilute);
+            istringstream iss(eilute);
+            vector<string> tokens;
+            string token;
+            while(iss>>token) {
+                tokens.push_back(token);
+            }
+            int number_of_nd=tokens.size()-3;
             int lines_num=0;
             while(getline(infile,eilute)) {
-                lines_num++;
                 istringstream iss(eilute);
+                lines_num++;
                 iss>>Temp.vardas>>Temp.pavarde;
                 Temp.ND.clear();
                 int ivertinimas;
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < number_of_nd; i++) {
                     iss >> ivertinimas;
                     Temp.ND.push_back(ivertinimas);
                 }
