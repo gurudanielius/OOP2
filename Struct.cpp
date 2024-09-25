@@ -34,6 +34,8 @@ void ived(Stud & Lok)
 
             }
         }
+        cout<<"*********************************"<<endl;
+
         for (int i=0;i<n;i++) {
             Lok.ND.push_back(rand()%10+1);
         }
@@ -96,9 +98,9 @@ void output(Stud Lok) {
 
 
 }
-void output2(vector<Stud> Lok){
+void output2(vector<Stud> v){
     std::ofstream outputFile;
-    outputFile.open("rezultatai.txt");
+    outputFile.open("rezik.txt");
     if (choice=="V") {
         outputFile<<left<<setw(10) << "Vardas" << "    "
             <<left<<setw(10) << "Pavarde" << "    "
@@ -113,10 +115,10 @@ void output2(vector<Stud> Lok){
     }
 
     if (outputFile.is_open()) {
-        for (int i=0;i<Lok.size();i++) {
-            outputFile<<left<<setw(10)<<Lok.at(i).vardas << "    "
-                <<left<<setw(10)<<Lok.at(i).pavarde << "    "
-                <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.at(i).rez<<endl;
+        for (int i=0;i<v.size();i++) {
+            outputFile<<left<<setw(10)<<v.at(i).vardas << "    "
+                <<left<<setw(10)<<v.at(i).pavarde << "    "
+                <<left<<setw(10)<<fixed<<setprecision(2)<<v.at(i).rez<<endl;
         }
         outputFile.close();
         cout << "Data written to the file successfully." << std::endl;
