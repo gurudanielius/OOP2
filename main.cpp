@@ -50,7 +50,7 @@ int main() {
     if(file_choice=="taip") {
         string tekstinis;
         try{
-            std::ifstream infile("C:/Users/danie/OneDrive/Documents/OOP-0.1/kursiokai.txt");
+            std::ifstream infile("C:/Users/danie/OneDrive/Documents/OOP-0.1/studentai100000.txt");
             string eilute;
             if (!infile.is_open()) {
                 throw std::ios_base::failure("Nepavyko atidaryti failo");
@@ -64,6 +64,7 @@ int main() {
                 tokens.push_back(token);
             }
             int number_of_nd=tokens.size()-3;
+            cout<<number_of_nd<<endl;
             int lines_num=0;
             while(getline(infile,eilute)) {
                 istringstream iss(eilute);
