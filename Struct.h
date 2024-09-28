@@ -14,3 +14,5 @@
     void val(Stud & Lok);
     void mediana(Stud & Lok);
     void output2(vector<Stud> Lok);
+    void generavimas(int n,string failo_pavadinimasm, int number_of_nd);
+    void isvedimas(vector <Stud> Lok);
