@@ -2,12 +2,12 @@
 #include "header.h"
 void ived(Stud & Lok)
 {
-    cout << "Ar norite ivesti pazymius rankiniu budu, ar generuoti atsitiktinai? (Ivesti/Generuoti) " << endl;
-    string method;
+    cout << "Ar norite ivesti pazymius rankiniu budu, ar generuoti atsitiktinai? (1-ivesti/2-Generuoti) " << endl;
+    int method;
     while (true) {
         cin>>method;
 
-        if (method=="Ivesti" || method=="Generuoti"||method=="ivesti"||method=="generuoti") {
+        if (method==2 || method==1) {
             break;
         }
         else {
@@ -15,7 +15,7 @@ void ived(Stud & Lok)
         }
     }
     //Pasirinkimas ivesti/generuoti/nuskaityti
-    if (method=="Generuoti"||method=="generuoti") {
+    if (method==1||method==2) {
         cout<<"Vardas: "<<endl;
         cin>>Lok.vardas;
         cout<<"Pavarde: "<<endl;
@@ -86,14 +86,14 @@ void ived(Stud & Lok)
 }
 void output(Stud Lok) {
     if (Lok.vid==0) {
-        cout<<left<<setw(10)<<Lok.vardas << "    "
-            <<left<<setw(10)<<Lok.pavarde << "    "
-            <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.rez<<endl;
+        cout<<left<<setw(15)<<Lok.vardas << "    "
+            <<left<<setw(15)<<Lok.pavarde << "    "
+            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.rez<<endl;
     }
     else {
-        cout<<left<<setw(10)<<Lok.vardas << "    "
-            <<left<<setw(10)<<Lok.pavarde << "    "
-            <<left<<setw(10)<<fixed<<setprecision(2)<<Lok.rez<<endl;
+        cout<<left<<setw(15)<<Lok.vardas << "    "
+            <<left<<setw(15)<<Lok.pavarde << "    "
+            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.rez<<endl;
     }
 
 
@@ -102,23 +102,23 @@ void output2(vector<Stud> v){
     std::ofstream outputFile;
     outputFile.open("rezik.txt");
     if (choice=="V") {
-        outputFile<<left<<setw(10) << "Vardas" << "    "
-            <<left<<setw(10) << "Pavarde" << "    "
-            <<left<<setw(10) << "Galutinis (Vid.)" << endl;
+        outputFile<<left<<setw(15) << "Vardas" << "    "
+            <<left<<setw(15) << "Pavarde" << "    "
+            <<left<<setw(15) << "Galutinis (Vid.)" << endl;
         outputFile << "-----------------------------------------------" << endl;
 
     }
     else {
-        outputFile<<left<<setw(10) << "Vardas" << "    "
-             <<left<<setw(10) << "Pavarde" << "    "
-             <<left<<setw(10) << "Galutinis (Med.)" << endl;
+        outputFile<<left<<setw(15) << "Vardas" << "    "
+             <<left<<setw(15) << "Pavarde" << "    "
+             <<left<<setw(15) << "Galutinis (Med.)" << endl;
     }
 
     if (outputFile.is_open()) {
         for (int i=0;i<v.size();i++) {
-            outputFile<<left<<setw(10)<<v.at(i).vardas << "    "
-                <<left<<setw(10)<<v.at(i).pavarde << "    "
-                <<left<<setw(10)<<fixed<<setprecision(2)<<v.at(i).rez<<endl;
+            outputFile<<left<<setw(15)<<v.at(i).vardas << "    "
+                <<left<<setw(15)<<v.at(i).pavarde << "    "
+                <<left<<setw(15)<<fixed<<setprecision(2)<<v.at(i).rez<<endl;
         }
         outputFile.close();
         cout << "Data written to the file successfully." << std::endl;
@@ -155,4 +155,76 @@ void mediana(Stud &Lok) {
     }
     Lok.rez=0.4*Lok.med+0.6*Lok.egz;
 
+}
+void generavimas(int n, string failo_pavadinimas, int number_of_nd) {
+    std::ofstream outputFile;
+    outputFile.open(failo_pavadinimas);
+    if (!outputFile.is_open()) {
+        std::cerr<<"Failas nerastas"<<endl;
+    }
+    outputFile<<left<<setw(15) << "Vardas" << "    "
+        <<left<<setw(15) << "Pavarde";
+    for (int i=0;i<number_of_nd;i++) {
+        outputFile<<left<<setw(15)<<"ND"+std::to_string(i+1);
+    }
+    outputFile<<left<<setw(15)<<"Egzaminas"<<endl;
+    outputFile << "-----------------------------------------------" << endl;
+    for (int i=0;i<n;i++) {
+        outputFile<<left<<setw(15)<<"Vardas"+std::to_string(i+1) << "    "
+            <<left<<setw(15)<<"Pavarde"+std::to_string(i+1);
+        for (int j=0;j<number_of_nd;j++) {
+            outputFile<<left<<setw(15)<<std::to_string(rand()%10+1);
+        }
+        outputFile<<left<<setw(15)<<rand()%10+1<<endl;
+    }
+    outputFile.close();
+
+}
+void isvedimas(vector<Stud> v1) {
+    string output_choice;
+    cout<<"Ar norite isvesti i faila? taip/ne "<<endl;
+    while (true) {
+        cin>>output_choice;
+        if (output_choice=="taip" ||output_choice=="ne") {
+            break;
+        }
+        else {
+            cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
+        }
+    }
+    string sort_choice;
+    cout<<"Ar norite isrusiuoti studentus pagal varda? taip/ne "<<endl;
+    cin>>sort_choice;
+    if (sort_choice=="taip") {
+        sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+       return a.vardas < b.vardas;
+         });
+    }
+    else if(sort_choice=="ne") {
+        sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+            return a.pavarde < b.pavarde;
+        });
+    }
+
+    if (output_choice=="ne") {
+        if (choice=="V") {
+            cout <<left<<setw(10) << "Vardas" << "    "
+                 <<left<<setw(10) << "Pavarde" << "    "
+                 <<left<<setw(10) << "Galutinis (Vid.)" << endl;
+        }
+        else {
+            cout <<left<<setw(10) << "Vardas" << "    "
+                 <<left<<setw(10) << "Pavarde" << "    "
+                 <<left<<setw(10) << "Galutinis (Med.)" << endl;
+        }
+        cout << "-----------------------------------------------" << endl;
+        int n;
+        n=v1.size();
+        for (int i=0;i<n;i++) {
+            output(v1.at(i));
+        }
+    }
+    else {
+        output2(v1);
+    }
 }
