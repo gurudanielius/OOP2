@@ -38,7 +38,9 @@ int main() {
                 }
                 string tekstinis;
                 try{
-                    std::ifstream infile("C:/Users/danie/OneDrive/Documents/OOP-0.1/studentai100000.txt");
+                    cout<<"Iveskite failo pavadinima"<<endl;
+                    cin>>tekstinis;
+                    std::ifstream infile(tekstinis);
                     string eilute;
                     if (!infile.is_open()) {
                         throw std::ios_base::failure("Nepavyko atidaryti failo");
@@ -74,6 +76,7 @@ int main() {
                         val(Temp);
                     }
                     infile.close();
+                    segregacija(v1);
                     isvedimas(v1);
                 }
                 catch (const std::ios_base::failure& e) {
@@ -107,6 +110,7 @@ int main() {
                     v1.push_back(Temp);
                     val(Temp);
                 }
+                segregacija(v1);
                 isvedimas(v1);
                 break;
             }
@@ -120,9 +124,10 @@ int main() {
                 cin>>number_of_nd;
                 cout<<"Iveskite failo pavadinima"<<endl;
                 cin>>failo_pavadinimas;
-
                 generavimas(number_of_students,failo_pavadinimas,number_of_nd);
+
                 break;
+
             }
         }
     }
