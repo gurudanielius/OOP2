@@ -1,5 +1,6 @@
 #include "Struct.h"
 #include "header.h"
+
 void ived(Stud & Lok)
 {
     cout << "Ar norite ivesti pazymius rankiniu budu, ar generuoti atsitiktinai? (1-ivesti/2-Generuoti) " << endl;
@@ -85,46 +86,35 @@ void ived(Stud & Lok)
     }
 }
 void output(Stud Lok) {
-    if (Lok.vid==0) {
-        cout<<left<<setw(15)<<Lok.vardas << "    "
-            <<left<<setw(15)<<Lok.pavarde << "    "
-            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.rez<<endl;
-    }
-    else {
-        cout<<left<<setw(15)<<Lok.vardas << "    "
-            <<left<<setw(15)<<Lok.pavarde << "    "
-            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.rez<<endl;
-    }
 
+    cout<<left<<setw(15)<<Lok.vardas << "    "
+            <<left<<setw(15)<<Lok.pavarde << "    "
+            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.med << "    "
+            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.vid << "    "
+            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.rez<<endl;
 
 }
-void output2(vector<Stud> v){
+void output2(vector<Stud> v,const string& file_name){
     std::ofstream outputFile;
-    outputFile.open("rezik.txt");
-    if (choice=="V") {
-        outputFile<<left<<setw(15) << "Vardas" << "    "
-            <<left<<setw(15) << "Pavarde" << "    "
-            <<left<<setw(15) << "Galutinis (Vid.)" << endl;
-        outputFile << "-----------------------------------------------" << endl;
-
-    }
-    else {
-        outputFile<<left<<setw(15) << "Vardas" << "    "
-             <<left<<setw(15) << "Pavarde" << "    "
-             <<left<<setw(15) << "Galutinis (Med.)" << endl;
-    }
-
+    outputFile.open(file_name);
+    outputFile<<left<<setw(15) << "Vardas" << "    "
+       <<left<<setw(15) << "Pavarde" << "    "
+       <<left<<setw(15) << "Vidurkis" << "    "
+       <<left<<setw(15) << "Mediana" << "    "
+       <<left<<setw(15) << "Galutinis (Vid.)" << endl;
     if (outputFile.is_open()) {
         for (int i=0;i<v.size();i++) {
             outputFile<<left<<setw(15)<<v.at(i).vardas << "    "
                 <<left<<setw(15)<<v.at(i).pavarde << "    "
+                <<left<<setw(15)<<fixed<<setprecision(2)<<v.at(i).vid << "    "
+                <<left<<setw(15)<<fixed<<setprecision(2)<<v.at(i).med << "    "
                 <<left<<setw(15)<<fixed<<setprecision(2)<<v.at(i).rez<<endl;
         }
         outputFile.close();
-        cout << "Data written to the file successfully." << std::endl;
+        cout << file_name+ " :Data written to the file successfully." << std::endl;
     }
     else {
-        cout << "Unable to open the file!" << std::endl;
+        cout << file_name+" :Unable to open the file!" << std::endl;
     }
 }
 void val(Stud & Lok) {
@@ -142,10 +132,23 @@ void vidurkis(Stud &Lok) {
     if (Lok.ND.size()==0) {
         Lok.vid=0;
     }
+    sort(Lok.ND.begin(), Lok.ND.end());
+    if (Lok.ND.size()%2==0) {
+        Lok.med=(Lok.ND.at(Lok.ND.size()/2-1)+Lok.ND.at(Lok.ND.size()/2))/2;
+    }
+    else {
+        Lok.med=Lok.ND.at(Lok.ND.size()/2);
+    }
     Lok.rez=0.4*Lok.vid+0.6*Lok.egz;
 }
 void mediana(Stud &Lok) {
-    Lok.vid=0;
+    for (int i=0;i<Lok.ND.size();i++) {
+        Lok.vid+=Lok.ND.at(i);
+    }
+    Lok.vid=Lok.vid/Lok.ND.size();
+    if (Lok.ND.size()==0) {
+        Lok.vid=0;
+    }
     sort(Lok.ND.begin(), Lok.ND.end());
     if (Lok.ND.size()%2==0) {
         Lok.med=(Lok.ND.at(Lok.ND.size()/2-1)+Lok.ND.at(Lok.ND.size()/2))/2;
@@ -179,6 +182,7 @@ void generavimas(int n, string failo_pavadinimas, int number_of_nd) {
     }
     outputFile.close();
 
+
 }
 void isvedimas(vector<Stud> v1) {
     string output_choice;
@@ -207,16 +211,12 @@ void isvedimas(vector<Stud> v1) {
     }
 
     if (output_choice=="ne") {
-        if (choice=="V") {
             cout <<left<<setw(10) << "Vardas" << "    "
                  <<left<<setw(10) << "Pavarde" << "    "
-                 <<left<<setw(10) << "Galutinis (Vid.)" << endl;
-        }
-        else {
-            cout <<left<<setw(10) << "Vardas" << "    "
-                 <<left<<setw(10) << "Pavarde" << "    "
-                 <<left<<setw(10) << "Galutinis (Med.)" << endl;
-        }
+                 <<left<<setw(10) << "Vidurkis" << "    "
+                 <<left<<setw(10) << "Mediana" << "    "
+                 <<left<<setw(20) << "Galutinis" << endl;
+
         cout << "-----------------------------------------------" << endl;
         int n;
         n=v1.size();
@@ -225,6 +225,58 @@ void isvedimas(vector<Stud> v1) {
         }
     }
     else {
-        output2(v1);
+        output2(v1,"rezik.txt");
     }
+}
+void segregacija(vector<Stud> v1) {
+    int n;
+    n=v1.size();
+    vector<Stud> slabakai, ramiakai;
+    for (int i=0;i<n;i++) {
+        if (v1.at(i).rez<5) {
+            slabakai.push_back(v1.at(i));
+        }
+        else {
+            ramiakai.push_back(v1.at(i));
+        }
+    }
+    cout<<"Pagal ka norite rusiuoti sugrupuotus studentus? (Vardas-1 /Pavarde-2/ Mediana-3/Vidurkis-4) "<<endl;
+    int rusiavimas;
+    cin>>rusiavimas;
+    if (rusiavimas==1) {
+        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
+       return a.vardas < b.vardas;
+         });
+        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
+       return a.vardas < b.vardas;
+         });
+    }
+    else if (rusiavimas==2) {
+        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
+            return a.pavarde < b.pavarde;
+        });
+        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
+            return a.pavarde < b.pavarde;
+        });
+    }
+    else if (rusiavimas==3) {
+        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
+            return a.med < b.med;
+        });
+        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
+            return a.med < b.med;
+        });
+    }
+    else if (rusiavimas==4) {
+        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
+            return a.vid < b.vid;
+        });
+        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
+            return a.vid < b.vid;
+        });
+    }
+
+    output2(slabakai,"slabakai.txt");
+    output2(ramiakai,"ramiakai.txt");
+
 }
