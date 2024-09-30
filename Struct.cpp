@@ -1,13 +1,17 @@
 #include "Struct.h"
 #include "header.h"
-
+std::chrono::steady_clock::time_point  DabartinisLaikas() {
+    return std::chrono::steady_clock::now();
+}
+double Skirtumas(const std::chrono::steady_clock::time_point pradzia, const std::chrono::steady_clock::time_point pabaiga) {
+    return std::chrono::duration_cast<std::chrono::duration<double>>(pabaiga-pradzia).count();
+}
 void ived(Stud & Lok)
 {
     cout << "Ar norite ivesti pazymius rankiniu budu, ar generuoti atsitiktinai? (1-ivesti/2-Generuoti) " << endl;
     int method;
     while (true) {
         cin>>method;
-
         if (method==2 || method==1) {
             break;
         }
@@ -73,18 +77,62 @@ void ived(Stud & Lok)
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
         }
-        cout<<"*********************************"<<endl;
     }
 
     //Pasirinkimas tarp vidurkio ir medianos
-    if (choice=="V") {
+    if (choice=="1") {
         vidurkis(Lok);
     }
-    if (choice=="M") {
-
+    if (choice=="2") {
         mediana(Lok);
     }
 }
+vector<Stud> nuskaitymas_is_failo(string tekstinis) {
+    try{
+        vector<Stud> v1;
+        Stud Temp;
+        std::ifstream infile(tekstinis);
+        string eilute,token;
+        if (!infile.is_open()) {
+            throw std::ios_base::failure("Nepavyko atidaryti failo");
+        }
+
+        getline(infile,eilute);
+        istringstream iss(eilute);
+        vector<string> tokens;
+        while(iss>>token) {
+            tokens.push_back(token);
+        }
+        int number_of_nd=tokens.size()-3;
+        while(getline(infile,eilute)) {
+            istringstream iss(eilute);
+            lines_num++;
+            iss>>Temp.vardas>>Temp.pavarde;
+            Temp.ND.clear();
+            int ivertinimas;
+            for (int i = 0; i < number_of_nd; i++) {
+                iss >> ivertinimas;
+                Temp.ND.push_back(ivertinimas);
+            }
+            iss >> Temp.egz;
+            if (choice=="1") {
+                vidurkis(Temp);
+            }
+            else {
+                mediana(Temp);
+            }
+            v1.push_back(Temp);
+            val(Temp);
+        }
+        infile.close();
+        lines_num--;
+        return v1;
+    }
+    catch (const std::ios_base::failure& e) {
+        std::terminate();
+    }
+}
+
 void output(Stud Lok) {
 
     cout<<left<<setw(15)<<Lok.vardas << "    "
@@ -171,8 +219,7 @@ void generavimas(int n, string failo_pavadinimas, int number_of_nd) {
         outputFile<<left<<setw(15)<<"ND"+std::to_string(i+1);
     }
     outputFile<<left<<setw(15)<<"Egzaminas"<<endl;
-    outputFile << "-----------------------------------------------" << endl;
-    for (int i=0;i<n;i++) {
+    for (int i=0;i<n+1;i++) {
         outputFile<<left<<setw(15)<<"Vardas"+std::to_string(i+1) << "    "
             <<left<<setw(15)<<"Pavarde"+std::to_string(i+1);
         for (int j=0;j<number_of_nd;j++) {
@@ -181,8 +228,6 @@ void generavimas(int n, string failo_pavadinimas, int number_of_nd) {
         outputFile<<left<<setw(15)<<rand()%10+1<<endl;
     }
     outputFile.close();
-
-
 }
 void isvedimas(vector<Stud> v1) {
     string output_choice;
@@ -232,6 +277,8 @@ void segregacija(vector<Stud> v1) {
     int n;
     n=v1.size();
     vector<Stud> slabakai, ramiakai;
+    auto segregacija_t0=DabartinisLaikas();
+
     for (int i=0;i<n;i++) {
         if (v1.at(i).rez<5) {
             slabakai.push_back(v1.at(i));
@@ -240,9 +287,13 @@ void segregacija(vector<Stud> v1) {
             ramiakai.push_back(v1.at(i));
         }
     }
+    auto segregacija_t1=DabartinisLaikas();
+    segregacija_t=Skirtumas(segregacija_t0,segregacija_t1);
+
     cout<<"Pagal ka norite rusiuoti sugrupuotus studentus? (Vardas-1 /Pavarde-2/ Mediana-3/Vidurkis-4) "<<endl;
     int rusiavimas;
     cin>>rusiavimas;
+    auto sort_t0=DabartinisLaikas();
     if (rusiavimas==1) {
         sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
        return a.vardas < b.vardas;
@@ -275,8 +326,25 @@ void segregacija(vector<Stud> v1) {
             return a.vid < b.vid;
         });
     }
+    auto sort_t1=DabartinisLaikas();
+    sort_t=Skirtumas(sort_t0,sort_t1);
 
+    auto slabakai_output_t0=DabartinisLaikas();
     output2(slabakai,"slabakai.txt");
+    auto slabakakai_output_t1=DabartinisLaikas();
+    slabakai_output_t=Skirtumas(slabakai_output_t0,slabakakai_output_t1);
+    auto ramiakai_output_t0=DabartinisLaikas();
     output2(ramiakai,"ramiakai.txt");
-
+    auto ramiakai_output_t1=DabartinisLaikas();
+    ramiakai_output_t=Skirtumas(ramiakai_output_t0,ramiakai_output_t1);
 }
+void output_times(int lines_num,double nuskaitymo_failo_t, double sort_t, double segregacija_t, double slabakai_output_t, double ramiakai_output_t) {
+    {
+        cout<<"Failo is "+ std::to_string(lines_num) + " irasu nuskaitymo laikas: " + std::to_string(nuskaitymo_failo_t)<<"s."<<endl;
+        cout<<std::to_string(lines_num) + " irasu rusiavimo laikas: "+ std::to_string(sort_t)<<"s."<<endl;
+        cout<<std::to_string(lines_num) + " irasu dalijimo i dvi grupes laikas: "+std::to_string(ramiakai_output_t)<<"s."<<endl;
+        cout<<std::to_string(lines_num) + " slabaku isvedimo i faila laikas: "+std::to_string(slabakai_output_t)<<"s."<<endl;
+        cout<<std::to_string(lines_num) + " rameku isvedimo i faila laikas: "+std::to_string(ramiakai_output_t)<<"s."<<endl;
+    }
+}
+
