@@ -9,6 +9,9 @@
 using std::istringstream;
 using std::endl;
 extern std::string choice;
+extern int lines_num;
+
+extern double nuskaitymo_failo_t, generavimo_failo_t, segregacija_t, sort_t, slabakai_output_t, ramiakai_output_t;
 using std::cout;
 using std::left;
 using std::cin;
@@ -21,4 +24,5 @@ using std::setw;
 using std::fixed;
 using std::setprecision;
 #include <algorithm>
+#include <chrono>
 #endif //HEADER_H
