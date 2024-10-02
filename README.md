@@ -70,7 +70,7 @@ Galutinis rezultatas rodo tik vidurkį arba medianą priklausomai nuo vartotojo 
 1. Pridėta generavimo funkcija 
 2. Atsirado funkcija, dalinanti studentus į dvi kategorijas. Studentai išvedami į du naujus failus:
     - Studentai, kurių galutinis balas < 5.0 - slabakai
-    - Studentai, kurių galutinis balas >= 5.0 - stiprekai
+    - Studentai, kurių galutinis balas >= 5.0 - ramekai
 3. Pridėta funkcija, matuojanti kitų funkcijų laiką, išvedanti sugrupuotus studentus į naujus failus.
 4. Nuo praeitos versijos atliktas refactoringas, dabar main.cpp veikia while-do principu.
 #
