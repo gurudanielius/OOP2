@@ -65,5 +65,86 @@ Galutinis rezultatas rodo tik vidurkį arba medianą priklausomai nuo vartotojo 
   <img src="https://github.com/user-attachments/assets/9a1b620b-c31c-42df-b6e3-dcc4f47f4a5b" width="500"/>
 </p>
 
+#  v0.2
+
+1. Pridėta generavimo funkcija 
+2. Atsirado funkcija, dalinanti studentus į dvi kategorijas. Studentai išvedami į du naujus failus:
+    - Studentai, kurių galutinis balas < 5.0 - slabakai
+    - Studentai, kurių galutinis balas >= 5.0 - stiprekai
+3. Pridėta funkcija, matuojanti kitų funkcijų laiką, išvedanti sugrupuotus studentus į naujus failus.
+4. Nuo praeitos versijos atliktas refactoringas, dabar main.cpp veikia while-do principu.
+#
+### Funkcijų aprašymai:
+-`output2()` - sukuriamas išvedimo tekstinis failas. 
+
+-`segregacija()` - studentai yra sugrupuojami į "slabakus" ir "stiprekus", tada vartotojas pats pasirenka pagal kokį atributą (Vardas, Pavarde,                             Vidurkis, Mediana) šiuos studentus rušiuoti 
+
+-`DabartinisLaikas()` - grąžina dabartinį laiką
+-`Skirtumas()` - grąžina dviejų laikų skirtumą
+-`Generavimas()` - sugeneruojamas norimas studentų skaičius, namų darbų skaičių pasirenka vartotojas. Rezultatas yra išvedamas į tekstinį failą.
+#
+
+### Laikai:
+Buvo išmatuoti 5 tekstinių failų generavimo trukmė. Šie tekstiniai failai buvo sudaryti iš 1 000, 10 000, 100 000, 1 000 000, 10 000 000 įrašų. 
+Lentelė, vaizduojanti generavimo laiką skirtingam studentų generavimo kiekiui:
+| Generavimo kiekis | Generavimo laikas |
+|------------------|-------------------|
+| 1000             | 0.0043209s        |
+| 10000            | 0.0381509s        |
+| 100000           | 0.389532s         |
+| 1000000          | 3.7939s           |
+| 10000000         | 39.7852s          |
+
+Tada buvo matuojamas šių tekstinių failų nuskaitymo laikas, rušiavimo laikas, dalijimo į dvi grupes laikas, slabaku išvedimo i failą laikas, rameku išvedimo į failą laikas. Šiuos požymius, naudojant kiekvieną sugeneruotą failą, matavome po 5 kartus ir apskaičiavome laiko vidurkį.
+
+- ### 1000:
+
+| Veiksmas                               | Vidurkis (s)  |
+|----------------------------------------|---------------|
+| 1000 įrašų rūšiavimo laikas            | 0.000800s     |
+| 1000 ramekų išvedimo į failą laikas    | 0.004089s     |
+| 1000 įrašų dalijimo į dvi grupes laikas| 0.004089s     |
+| 1000 slabakų išvedimo į failą laikas   | 0.002991s     |
+| Failo iš 1000 įrašų nuskaitymo laikas  | 0.004083s     |
+#
+- ### 10000:
+| Veiksmas                               | Vidurkis (s)  |
+|----------------------------------------|---------------|
+| Failo iš 10000 įrašų nuskaitymo laikas  | 0.036271s     |
+| 10000 įrašų rūšiavimo laikas            | 0.008440s     |
+| 10000 įrašų dalijimo į dvi grupes laikas| 0.032235s     |
+| 10000 slabakų išvedimo į failą laikas   | 0.024280s     |
+| 10000 ramekų išvedimo į failą laikas    | 0.032235s     |
+#
+- ### 100000:
+| Veiksmas                               | Vidurkis (s)  |
+|----------------------------------------|---------------|
+| Failo iš 100000 įrašų nuskaitymo laikas | 0.356733s     |
+| 100000 įrašų rūšiavimo laikas           | 0.114551s     |
+| 100000 įrašų dalijimo į dvi grupes laikas| 0.333200s     |
+| 100000 slabakų išvedimo į failą laikas  | 0.228788s     |
+| 100000 ramekų išvedimo į failą laikas   | 0.333200s     |
+#
+- ### 1 000 000:
+| Veiksmas                               | Vidurkis (s)  |
+|----------------------------------------|---------------|
+| Failo iš 1000000 įrašų nuskaitymo laikas | 3.614022s     |
+| 1000000 įrašų rūšiavimo laikas           | 1.502412s     |
+| 1000000 įrašų dalijimo į dvi grupes laikas| 3.325965s     |
+| 1000000 slabakų išvedimo į failą laikas  | 2.286499s     |
+| 1000000 ramekų išvedimo į failą laikas   | 3.325965s     |
+#
+- ### 10 000 000:
+| Veiksmas                               | Vidurkis (s)  |
+|----------------------------------------|---------------|
+| Failo iš 10000000 įrašų nuskaitymo laikas | 37.966504s     |
+| 10000000 įrašų rūšiavimo laikas           | 19.345238s     |
+| 10000000 įrašų dalijimo į dvi grupes laikas| 34.917649s     |
+| 10000000 slabakų išvedimo į failą laikas  | 24.457310s     |
+| 10000000 ramekų išvedimo į failą laikas   | 34.917649s     |
+#
+![time_generation](https://github.com/user-attachments/assets/cdd887db-a22a-4c92-9d6c-106cf8bbbc8b)
+### Veikimo schema
+![Studentų duomenų apdorojimo srauto diagrama](https://github.com/user-attachments/assets/326e3b5e-f806-417b-90fe-e325cec5a8a6)
 
 
