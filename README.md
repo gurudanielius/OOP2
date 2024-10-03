@@ -75,13 +75,11 @@ Galutinis rezultatas rodo tik vidurkį arba medianą priklausomai nuo vartotojo 
 4. Nuo praeitos versijos atliktas refactoringas, dabar main.cpp veikia while-do principu.
 #
 ### Funkcijų aprašymai:
--`output2()` - sukuriamas išvedimo tekstinis failas. 
-
--`segregacija()` - studentai yra sugrupuojami į "slabakus" ir "stiprekus", tada vartotojas pats pasirenka pagal kokį atributą (Vardas, Pavarde,                             Vidurkis, Mediana) šiuos studentus rušiuoti 
-
--`DabartinisLaikas()` - grąžina dabartinį laiką
--`Skirtumas()` - grąžina dviejų laikų skirtumą
--`Generavimas()` - sugeneruojamas norimas studentų skaičius, namų darbų skaičių pasirenka vartotojas. Rezultatas yra išvedamas į tekstinį failą.
+- `output2()` - sukuriamas išvedimo tekstinis failas. 
+- `segregacija()` - studentai yra sugrupuojami į "slabakus" ir "stiprekus", tada vartotojas pats pasirenka pagal kokį atributą (Vardas, Pavarde,Vidurkis, Mediana) šiuos studentus rušiuoti 
+- `DabartinisLaikas()` - grąžina dabartinį laiką
+- `Skirtumas()` - grąžina dviejų laikų skirtumą
+- `Generavimas()` - sugeneruojamas norimas studentų skaičius, namų darbų skaičių pasirenka vartotojas. Rezultatas yra išvedamas į tekstinį failą.
 #
 
 ### Laikai:
