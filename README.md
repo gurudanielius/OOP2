@@ -32,7 +32,7 @@ Galutinis rezultatas rodo tik vidurkį arba medianą priklausomai nuo vartotojo 
 
 # V0.1
 
-###Atnaujinimai:
+### Atnaujinimai:
   1. Pridėtas klaidų tvarkymas ir apribojimai šiems klausimams, skirtiems vartotojui:
        - "Ar skaityti duomenis is failo? taip/ne"
        - "Iveskite studentu skaiciu"
