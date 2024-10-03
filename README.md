@@ -22,8 +22,7 @@ Programinis kodas:
 
   - Jei pasirenkama sugeneruoti duomenis, tada paklausiama, kiek namų darbų pažymių norima sugeneruoti. Sugeneruojamas ir egz. rez
 3. Išvedamas rezultatas tokia struktūra:
- Vardas       Pavarde    Galutinis (Vid.)\(Med.) 
------------------------------------------------
+   Vardas       Pavarde    Galutinis (Vid.)\(Med.) 
 Galutinis rezultatas rodo tik vidurkį arba medianą priklausomai nuo vartotojo pasirinkimo.
 
 <h2>Programos veikimo schema</h2>
