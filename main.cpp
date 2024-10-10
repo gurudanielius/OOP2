@@ -25,7 +25,6 @@ int main() {
         }
         switch (pasirinkimas) {
             case 1: {
-                //TODO kazkur kitur nukisti choice
                 cout<<"Pasirinkite ka skaiciuoti: 1 - vidurki, 2 - mediana"<<endl;
                 while (true) {
                     cin>>choice;
@@ -95,9 +94,9 @@ int main() {
     }
     while (pasirinkimas!=10);
     if (generavimo_failo_t!=0) {
+        lines_num=number_of_students;
         cout<<lines_num<<" generavimo laikas: "<<generavimo_failo_t<<"s. "<<endl;
     }
-    //TODO dar su ivedimu ranka
     output_times(lines_num,nuskaitymo_failo_t,sort_t,segregacija_t,slabakai_output_t,ramiakai_output_t);
 
     system("pause");
