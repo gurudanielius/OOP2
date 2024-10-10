@@ -290,7 +290,7 @@ void segregacija(vector<Stud> v1) {
     auto segregacija_t1=DabartinisLaikas();
     segregacija_t=Skirtumas(segregacija_t0,segregacija_t1);
 
-    cout<<"Pagal ka norite rusiuoti sugrupuotus studentus? (Vardas-1 /Pavarde-2/ Mediana-3/Vidurkis-4) "<<endl;
+    cout<<"Pagal ka norite rusiuoti sugrupuotus studentus? (Vardas - 1/Pavarde - 2/ Mediana - 3/Vidurkis - 4/Galutini - 5) "<<endl;
     int rusiavimas;
     cin>>rusiavimas;
     auto sort_t0=DabartinisLaikas();
@@ -326,6 +326,14 @@ void segregacija(vector<Stud> v1) {
             return a.vid < b.vid;
         });
     }
+    else if (rusiavimas==5) {
+        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
+            return a.rez < b.rez;
+        });
+        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
+            return a.rez < b.rez;
+        });
+    }
     auto sort_t1=DabartinisLaikas();
     sort_t=Skirtumas(sort_t0,sort_t1);
 
@@ -347,5 +355,4 @@ void output_times(int lines_num,double nuskaitymo_failo_t, double sort_t, double
         cout<<std::to_string(lines_num) + " rameku isvedimo i faila laikas: "+std::to_string(ramiakai_output_t)<<"s."<<endl;
     }
 }
-//Pabaiga
 
