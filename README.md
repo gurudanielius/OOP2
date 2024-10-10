@@ -142,6 +142,8 @@ Tada buvo matuojamas šių tekstinių failų nuskaitymo laikas, rušiavimo laika
 #
 ![time_generation](https://github.com/user-attachments/assets/cdd887db-a22a-4c92-9d6c-106cf8bbbc8b)
 ### Veikimo schema
-![Studentų duomenų apdorojimo srauto diagrama](https://github.com/user-attachments/assets/326e3b5e-f806-417b-90fe-e325cec5a8a6)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9a1b620b-c31c-42df-b6e3-dcc4f47f4a5b](https://github.com/user-attachments/assets/326e3b5e-f806-417b-90fe-e325cec5a8a6" width="500"/>
+</p>
 
 
