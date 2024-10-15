@@ -6,7 +6,7 @@ double nuskaitymo_failo_t, generavimo_failo_t, segregacija_t, sort_t, slabakai_o
 int lines_num;
 
 int main() {
-    vector<Stud> v1;
+    list<Stud> v1;
     Stud Temp;
     int pasirinkimas,number_of_nd,number_of_students;
     string file_choice,output_choice,failo_pavadinimas;
