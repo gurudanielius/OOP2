@@ -291,45 +291,46 @@ void segregacija(list<Stud> v1) {
     cin>>rusiavimas;
     auto sort_t0=DabartinisLaikas();
     if (rusiavimas==1) {
-        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
-       return a.vardas < b.vardas;
-         });
-        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
-       return a.vardas < b.vardas;
-         });
+        slabakai.sort([](const Stud &a, const Stud &b) {
+            return a.vardas < b.vardas;
+        });
+
+        ramiakai.sort([](const Stud &a, const Stud &b) {
+           return a.vardas < b.vardas;
+       });
     }
     else if (rusiavimas==2) {
-        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
-            return a.pavarde < b.pavarde;
-        });
-        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
-            return a.pavarde < b.pavarde;
-        });
+    slabakai.sort([](const Stud &a, const Stud &b) {
+        return a.pavarde < b.pavarde;
+    });
+    ramiakai.sort([](const Stud &a, const Stud &b) {
+        return a.pavarde < b.pavarde;
+    });
     }
     else if (rusiavimas==3) {
-        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
+        slabakai.sort([](const Stud &a, const Stud &b) {
             return a.med < b.med;
         });
-        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
+        ramiakai.sort([](const Stud &a, const Stud &b) {
             return a.med < b.med;
         });
     }
     else if (rusiavimas==4) {
-        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
+        slabakai.sort([](const Stud &a, const Stud &b) {
             return a.vid < b.vid;
         });
-        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
+        ramiakai.sort([](const Stud &a, const Stud &b) {
             return a.vid < b.vid;
         });
     }
     else if (rusiavimas==5) {
-        sort(slabakai.begin(), slabakai.end(), [](const Stud &a, const Stud &b) {
+        slabakai.sort([](const Stud &a, const Stud &b) {
             return a.rez < b.rez;
         });
-        sort(ramiakai.begin(), ramiakai.end(), [](const Stud &a, const Stud &b) {
+        ramiakai.sort([](const Stud &a, const Stud &b) {
             return a.rez < b.rez;
         });
-    }
+}
     auto sort_t1=DabartinisLaikas();
     sort_t=Skirtumas(sort_t0,sort_t1);
 
