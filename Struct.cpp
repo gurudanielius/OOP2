@@ -87,9 +87,9 @@ void ived(Stud & Lok)
         mediana(Lok);
     }
 }
-vector<Stud> nuskaitymas_is_failo(string tekstinis) {
+list<Stud> nuskaitymas_is_failo(string tekstinis) {
     try{
-        vector<Stud> v1;
+        list<Stud> v1;
         Stud Temp;
         std::ifstream infile(tekstinis);
         string eilute,token;
@@ -133,16 +133,16 @@ vector<Stud> nuskaitymas_is_failo(string tekstinis) {
     }
 }
 
-void output(Stud Lok) {
-
-    cout<<left<<setw(15)<<Lok.vardas << "    "
-            <<left<<setw(15)<<Lok.pavarde << "    "
-            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.med << "    "
-            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.vid << "    "
-            <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.rez<<endl;
-
-}
-void output2(vector<Stud> v,const string& file_name){
+// void output(Stud Lok) {
+//
+//     cout<<left<<setw(15)<<Lok.vardas << "    "
+//             <<left<<setw(15)<<Lok.pavarde << "    "
+//             <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.med << "    "
+//             <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.vid << "    "
+//             <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.rez<<endl;
+//
+// }
+void output2(list<Stud> v,const string& file_name){
     std::ofstream outputFile;
     outputFile.open(file_name);
     outputFile<<left<<setw(15) << "Vardas" << "    "
@@ -151,13 +151,13 @@ void output2(vector<Stud> v,const string& file_name){
        <<left<<setw(15) << "Mediana" << "    "
        <<left<<setw(15) << "Galutinis (Vid.)" << endl;
     if (outputFile.is_open()) {
-        for (int i=0;i<v.size();i++) {
-            outputFile<<left<<setw(15)<<v.at(i).vardas << "    "
-                <<left<<setw(15)<<v.at(i).pavarde << "    "
-                <<left<<setw(15)<<fixed<<setprecision(2)<<v.at(i).vid << "    "
-                <<left<<setw(15)<<fixed<<setprecision(2)<<v.at(i).med << "    "
-                <<left<<setw(15)<<fixed<<setprecision(2)<<v.at(i).rez<<endl;
-        }
+        for (auto it = v.begin(); it != v.end(); ++it) {
+    outputFile << left << setw(15) << it->vardas << "    "
+               << left << setw(15) << it->pavarde << "    "
+               << left << setw(15) << fixed << setprecision(2) << it->vid << "    "
+               << left << setw(15) << fixed << setprecision(2) << it->med << "    "
+               << left << setw(15) << fixed << setprecision(2) << it->rez << endl;
+}
         outputFile.close();
         cout << file_name+ " :Data written to the file successfully." << std::endl;
     }
@@ -229,62 +229,58 @@ void generavimas(int n, string failo_pavadinimas, int number_of_nd) {
     }
     outputFile.close();
 }
-void isvedimas(vector<Stud> v1) {
-    string output_choice;
-    cout<<"Ar norite isvesti i faila? taip/ne "<<endl;
-    while (true) {
-        cin>>output_choice;
-        if (output_choice=="taip" ||output_choice=="ne") {
-            break;
-        }
-        else {
-            cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
-        }
-    }
-    string sort_choice;
-    cout<<"Ar norite isrusiuoti studentus pagal varda? taip/ne "<<endl;
-    cin>>sort_choice;
-    if (sort_choice=="taip") {
-        sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
-       return a.vardas < b.vardas;
-         });
-    }
-    else if(sort_choice=="ne") {
-        sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
-            return a.pavarde < b.pavarde;
-        });
-    }
-
-    if (output_choice=="ne") {
-            cout <<left<<setw(10) << "Vardas" << "    "
-                 <<left<<setw(10) << "Pavarde" << "    "
-                 <<left<<setw(10) << "Vidurkis" << "    "
-                 <<left<<setw(10) << "Mediana" << "    "
-                 <<left<<setw(20) << "Galutinis" << endl;
-
-        cout << "-----------------------------------------------" << endl;
-        int n;
-        n=v1.size();
-        for (int i=0;i<n;i++) {
-            output(v1.at(i));
-        }
-    }
-    else {
-        output2(v1,"rezik.txt");
-    }
-}
-void segregacija(vector<Stud> v1) {
-    int n;
-    n=v1.size();
-    vector<Stud> slabakai, ramiakai;
+// void isvedimas(list<Stud> v1) {
+//     string output_choice;
+//     cout<<"Ar norite isvesti i faila? taip/ne "<<endl;
+//     while (true) {
+//         cin>>output_choice;
+//         if (output_choice=="taip" ||output_choice=="ne") {
+//             break;
+//         }
+//         else {
+//             cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
+//         }
+//     }
+//     string sort_choice;
+//     cout<<"Ar norite isrusiuoti studentus pagal varda? taip/ne "<<endl;
+//     cin>>sort_choice;
+//     if (sort_choice=="taip") {
+//         sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+//        return a.vardas < b.vardas;
+//          });
+//     }
+//     else if(sort_choice=="ne") {
+//         sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
+//             return a.pavarde < b.pavarde;
+//         });
+//     }
+//
+//     if (output_choice=="ne") {
+//             cout <<left<<setw(10) << "Vardas" << "    "
+//                  <<left<<setw(10) << "Pavarde" << "    "
+//                  <<left<<setw(10) << "Vidurkis" << "    "
+//                  <<left<<setw(10) << "Mediana" << "    "
+//                  <<left<<setw(20) << "Galutinis" << endl;
+//
+//         cout << "-----------------------------------------------" << endl;
+//         for (auto it = v1.begin(); it != v1.end(); ++it) {
+//             output(*it);
+//         }
+//     }
+//     else {
+//         output2(v1,"rezik.txt");
+//     }
+// }
+void segregacija(list<Stud> v1) {
+    list<Stud> slabakai, ramiakai;
     auto segregacija_t0=DabartinisLaikas();
 
-    for (int i=0;i<n;i++) {
-        if (v1.at(i).rez<5) {
-            slabakai.push_back(v1.at(i));
+    for (auto it =v1.begin(); it!=v1.end(); ++it) {
+        if (it->rez<5) {
+            slabakai.push_back(*it);
         }
         else {
-            ramiakai.push_back(v1.at(i));
+            ramiakai.push_back(*it);
         }
     }
     auto segregacija_t1=DabartinisLaikas();
