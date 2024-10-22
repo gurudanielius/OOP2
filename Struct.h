@@ -10,7 +10,7 @@
     };
     void ived(Stud & Lok);
     void vidurkis(Stud & Lok);
-    void output(Stud Lok);
+    void output(list <Stud> & Lok);
     void val(Stud & Lok);
     void mediana(Stud & Lok);
     void output2(list<Stud> Lok,const string& file_name);
