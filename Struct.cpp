@@ -1,5 +1,6 @@
 #include "Struct.h"
 #include "header.h"
+int rusiavimas;
 std::chrono::steady_clock::time_point  DabartinisLaikas() {
     return std::chrono::steady_clock::now();
 }
@@ -133,15 +134,51 @@ list<Stud> nuskaitymas_is_failo(string tekstinis) {
     }
 }
 
-// void output(Stud Lok) {
-//
-//     cout<<left<<setw(15)<<Lok.vardas << "    "
-//             <<left<<setw(15)<<Lok.pavarde << "    "
-//             <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.med << "    "
-//             <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.vid << "    "
-//             <<left<<setw(15)<<fixed<<setprecision(2)<<Lok.rez<<endl;
-//
-// }
+void output(list<Stud> &v1) {
+    if (rusiavimas==1) {
+        v1.sort([](const Stud &a, const Stud &b) {
+            return a.vardas < b.vardas;
+        });
+    }
+    else if (rusiavimas==2) {
+        v1.sort([](const Stud &a, const Stud &b) {
+            return a.pavarde < b.pavarde;
+        });
+    }
+    else if (rusiavimas==3) {
+        v1.sort([](const Stud &a, const Stud &b) {
+            return a.med > b.med;
+        });
+
+    }
+    else if (rusiavimas==4) {
+        v1.sort([](const Stud &a, const Stud &b) {
+            return a.vid > b.vid;
+        });
+    }
+    else if (rusiavimas==5) {
+        v1.sort([](const Stud &a, const Stud &b) {
+            return a.rez > b.rez;
+        });
+
+    }
+    cout <<left<<setw(15) << "Vardas" << "    "
+         <<left<<setw(15) << "Pavarde" << "    "
+         <<left<<setw(15) << "Vidurkis" << "    "
+         <<left<<setw(15) << "Mediana" << "    "
+         <<left<<setw(15) << "Galutinis" << "    "
+         <<left<<setw(20) << "Adresas" << endl;
+
+    for (auto it =v1.begin(); it != v1.end(); ++it) {
+        cout<<left<<setw(15)<<it->vardas << "    "
+            <<left<<setw(15)<<it->pavarde << "    "
+            <<left<<setw(15)<<fixed<<setprecision(2)<<it->med << "    "
+            <<left<<setw(15)<<fixed<<setprecision(2)<<it->vid << "    "
+            <<left<<setw(15)<<fixed<<setprecision(2)<<it->rez<<"    "
+            <<left<<setw(20)<<fixed<<setprecision(2)<<&it<<endl;
+    }
+
+}
 void output2(list<Stud> v,const string& file_name){
     std::ofstream outputFile;
     outputFile.open(file_name);
@@ -287,7 +324,6 @@ void segregacija(list<Stud> v1) {
     segregacija_t=Skirtumas(segregacija_t0,segregacija_t1);
 
     cout<<"Pagal ka norite rusiuoti sugrupuotus studentus? (Vardas - 1/Pavarde - 2/ Mediana - 3/Vidurkis - 4/Galutini - 5) "<<endl;
-    int rusiavimas;
     cin>>rusiavimas;
     auto sort_t0=DabartinisLaikas();
     if (rusiavimas==1) {
@@ -309,26 +345,26 @@ void segregacija(list<Stud> v1) {
     }
     else if (rusiavimas==3) {
         slabakai.sort([](const Stud &a, const Stud &b) {
-            return a.med < b.med;
+            return a.med > b.med;
         });
         ramiakai.sort([](const Stud &a, const Stud &b) {
-            return a.med < b.med;
+            return a.med > b.med;
         });
     }
     else if (rusiavimas==4) {
         slabakai.sort([](const Stud &a, const Stud &b) {
-            return a.vid < b.vid;
+            return a.vid > b.vid;
         });
         ramiakai.sort([](const Stud &a, const Stud &b) {
-            return a.vid < b.vid;
+            return a.vid > b.vid;
         });
     }
     else if (rusiavimas==5) {
         slabakai.sort([](const Stud &a, const Stud &b) {
-            return a.rez < b.rez;
+            return a.rez > b.rez;
         });
         ramiakai.sort([](const Stud &a, const Stud &b) {
-            return a.rez < b.rez;
+            return a.rez > b.rez;
         });
 }
     auto sort_t1=DabartinisLaikas();
