@@ -25,7 +25,7 @@ int main() {
         }
         switch (pasirinkimas) {
             case 1: {
-                cout<<"Pasirinkite ka skaiciuoti: 1 - vidurki, 2 - mediana"<<endl;
+                cout<<"Pasirinkite pagal ka skaiciuoti galutini: 1 - vidurki, 2 - mediana"<<endl;
                 while (true) {
                     cin>>choice;
                     if (choice=="1" || choice=="2") {
@@ -71,6 +71,10 @@ int main() {
                     val(Temp);
                 }
                 segregacija(v1);
+
+                //output
+
+                output(v1);
                 break;
             }
             case 3:{
