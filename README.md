@@ -3,7 +3,7 @@
 
 #  v0.3
 ### Atnaujinimai:
-Stud objektai dabar yra talpinami List duomenų stuktūroje.
+Stud objektai dabar yra talpinami List konteineryje.
 ### Funkcijų aprašymai:
 - `output2()` - sukuriamas išvedimo tekstinis failas. 
 - `segregacija()` - studentai yra sugrupuojami į "slabakus" ir "stiprekus", tada vartotojas pats pasirenka pagal kokį atributą (Vardas, Pavarde,Vidurkis, Mediana) šiuos studentus rušiuoti 
