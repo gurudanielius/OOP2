@@ -88,6 +88,7 @@ void ived(Stud & Lok)
         mediana(Lok);
     }
 }
+// TODO pataisyt
 list<Stud> nuskaitymas_is_failo(string tekstinis) {
     try{
         list<Stud> v1;
@@ -175,7 +176,7 @@ void output(list<Stud> &v1) {
             <<left<<setw(15)<<fixed<<setprecision(2)<<it->med << "    "
             <<left<<setw(15)<<fixed<<setprecision(2)<<it->vid << "    "
             <<left<<setw(15)<<fixed<<setprecision(2)<<it->rez<<"    "
-            <<left<<setw(20)<<fixed<<setprecision(2)<<&it<<endl;
+            <<left<<setw(20)<<fixed<<setprecision(2)<<&(*it)<<endl;
     }
 
 }
