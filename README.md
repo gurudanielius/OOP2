@@ -2,6 +2,7 @@
 ### Apie programa: studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutinį rezultatą pagal namų darbų ir egzamino balus.
 
 #  v0.3
+
 ### Atnaujinimai:
 Stud objektai dabar yra talpinami List konteineryje.
 ### Funkcijų aprašymai:
@@ -11,6 +12,10 @@ Stud objektai dabar yra talpinami List konteineryje.
 - `Skirtumas()` - grąžina dviejų laikų skirtumą
 - `Generavimas()` - sugeneruojamas norimas studentų skaičius, namų darbų skaičių pasirenka vartotojas. Rezultatas yra išvedamas į tekstinį failą.
 #
+### Kompiuterio specifikacijos:
+- Processor AMD Ryzen 9 6900HS with Radeon Graphics, 3301 Mhz, 3.30 GHz, 8 Core(s), 16 Logical Processor(s),
+- Installed Physical Memory (RAM)	16.0 GB
+- 1TB SSD storage
 
 ### Laikai
 Buvo išmatuoti 5 tekstinių failų generavimo trukmė. Šie tekstiniai failai buvo sudaryti iš 1 000, 10 000, 100 000, 1 000 000, 10 000 000 įrašų. Lentelė, vaizduojanti generavimo laiką skirtingam studentų generavimo kiekiui:
