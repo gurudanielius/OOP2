@@ -1,3 +1,0 @@
-C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-0.1/cmake-build-debug/CMakeFiles/OOP_v_pradin_.dir
-C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-0.1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/danie/OneDrive/Stalinis kompiuteris/OOP-0.1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
