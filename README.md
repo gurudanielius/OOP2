@@ -5,20 +5,20 @@
 - Installed Physical Memory (RAM)	16.0 GB
 - 1TB SSD storage
 # Naudojimo instrukcija:
-### Using compiler:
-1. Clone the Repository:
+### Naudojant kompiliatorių:
+1. Nuklonuojame repozitoriją:
 
        git clone https://github.com/gurudanielius/OOP/
        cd OOP
    
-3. Compile the Code: Use a C++ compiler to compile the code. For example, using g++:
+3. Sukompiliuojame kodą:
 
        g++ -std=c++11 *.cpp -o oop
    
-5. Run the Application:
+5. Paleidžiame programą:
 
-       ./blockchain
-### Using cmake:
+       ./oop
+### Naudojant cmake:
 1. Terminale nurodome direktorija, kur egzistuoja projekto CMakeLists.txt failas, sukuriam build failams skirta direktorija :
 
        cd "[direktorija]"
