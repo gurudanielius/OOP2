@@ -55,50 +55,59 @@ Dabar pateikiamos skirtingos programos realizacijos naudojant skirtingas student
 
 ### Laikai
 Kiekvienas laikas kiekvienam kiekiui ir strategijai buvo matuojamas 5 kartus ir išvestas vidurkis
+Rūšiavimas greičiausiai veikia:
+1000: su 3_strategija ir vektoriais.
+10000: su visom strategijom panašiai.
+100000: 2_strategija vektoriai, 2_strategija listai, list su remove_if.
+1000000: remove_if vektoriai.
+10000000: remove_if vektoriai.
 - ### 1000:
-| Veiksmas                               | strategija_1 su vektoriais | strategija_1 su listais | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
-|----------------------------------------|----------------------------|---------------|------------------------|---------------------|-------------------|---------------------|
-| Failo iš įrašų nuskaitymo laikas       | 0.004083                   | 0.007082s     | 0.003850               | 0.003809           | 0.004269          | 0.004293           |
-| Įrašų rūšiavimo laikas                 | 0.000800                   | 0.000341s     | 0.000626               | 0.000189           | 0.000740          | 0.000202           |
-| Įrašų dalijimo į dvi grupes laikas     | 0.004089                   | 0.004645s     | 0.004104               | 0.004416           | 0.003959          | 0.003825           |
-| Slabakų išvedimo į failą laikas        | 0.002991                   | 0.005859s     | 0.003840               | 0.003197           | 0.003222          | 0.002965           |
-| Ramekų išvedimo į failą laikas         | 0.004089                   | 0.004645s     | 0.004104               | 0.004416           | 0.003959          | 0.003825           |
+| Veiksmas                               | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
+|----------------------------------------|-------------------------|---------------------|-------------------|---------------------|
+| Failo iš įrašų nuskaitymo laikas       | 0.003850               | 0.003809           | 0.004269          | 0.004293           |
+| Įrašų rūšiavimo laikas                 | 0.000626               | 0.000189           | 0.000740          | 0.000202           |
+| Įrašų dalijimo į dvi grupes laikas     | 0.004104               | 0.004416           | 0.003959          | 0.003825           |
+| Slabakų išvedimo į failą laikas        | 0.003840               | 0.003197           | 0.003222          | 0.002965           |
+| Ramekų išvedimo į failą laikas         | 0.004104               | 0.004416           | 0.003959          | 0.003825           |
 
 - ### 10 000:
-| Veiksmas                               | strategija_1 su vektoriais | strategija_1 su listais | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
-|----------------------------------------|----------------------------|---------------|------------------------|---------------------|-------------------|---------------------|
-| Failo iš įrašų nuskaitymo laikas       | 0.036271                   | 0.038414s     | 0.037203               | 0.037658           | 0.037578          | 0.038736           |
-| Įrašų rūšiavimo laikas                 | 0.008440                   | 0.002534s     | 0.008531               | 0.002442           | 0.008996          | 0.002506           |
-| Įrašų dalijimo į dvi grupes laikas     | 0.032235                   | 0.034855s     | 0.034082               | 0.034779           | 0.040938          | 0.035155           |
-| Slabakų išvedimo į failą laikas        | 0.024280                   | 0.024945s     | 0.024473               | 0.024898           | 0.028195          | 0.024515           |
-| Ramekų išvedimo į failą laikas         | 0.032235                   | 0.034855s     | 0.034082               | 0.034779           | 0.040938          | 0.035155           |
+| Veiksmas                               | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
+|----------------------------------------|-------------------------|---------------------|-------------------|---------------------|
+| Failo iš įrašų nuskaitymo laikas       | 0.037203               | 0.037658           | 0.037578          | 0.038736           |
+| Įrašų rūšiavimo laikas                 | 0.008531               | 0.002442           | 0.008996          | 0.002506           |
+| Įrašų dalijimo į dvi grupes laikas     | 0.034082               | 0.034779           | 0.040938          | 0.035155           |
+| Slabakų išvedimo į failą laikas        | 0.024473               | 0.024898           | 0.028195          | 0.024515           |
+| Ramekų išvedimo į failą laikas         | 0.034082               | 0.034779           | 0.040938          | 0.035155           |
+
 
 - ### 100 000:
-| Veiksmas                               | strategija_1 su vektoriais | strategija_1 su listais | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
-|----------------------------------------|----------------------------|---------------|------------------------|---------------------|-------------------|---------------------|
-| Failo iš įrašų nuskaitymo laikas       | 0.356733                   | 0.363788s     | 0.391728               | 0.384077           | 0.392623          | 0.363788           |
-| Įrašų rūšiavimo laikas                 | 0.114551                   | 0.027505s     | 0.040480               | 0.043515           | 0.039085          | 0.027505           |
-| Įrašų dalijimo į dvi grupes laikas     | 0.333200                   | 0.343392s     | 0.357057               | 0.356047           | 0.355554          | 0.343392           |
-| Slabakų išvedimo į failą laikas        | 0.228788                   | 0.240831s     | 0.249972               | 0.255114           | 0.255086          | 0.240831           |
-| Ramekų išvedimo į failą laikas         | 0.333200                   | 0.343392s     | 0.357057               | 0.356047           | 0.355554          | 0.343392           |
+| Veiksmas                               | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
+|----------------------------------------|-------------------------|---------------------|-------------------|---------------------|
+| Failo iš įrašų nuskaitymo laikas       | 0.391728               | 0.384077           | 0.392623          | 0.3881836           |
+| Įrašų rūšiavimo laikas                 | 0.040480               | 0.043515           | 0.039085          | 0.723616           |
+| Įrašų dalijimo į dvi grupes laikas     | 0.357057               | 0.356047           | 0.355554          | 0.399911           |
+| Slabakų išvedimo į failą laikas        | 0.249972               | 0.255114           | 0.255086          | 0.264142           |
+| Ramekų išvedimo į failą laikas         | 0.357057               | 0.356047           | 0.355554          | 0.351554           |
+
 
  ## 1 000 000:
-| Veiksmas                               | strategija_1 su vektoriais | strategija_1 su listais | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
-|----------------------------------------|----------------------------|---------------|------------------------|---------------------|-------------------|---------------------|
-| Failo iš įrašų nuskaitymo laikas       | 3.614022                   | 3.616999s     | 3.861661               | 3.714822           | 5.004823          | 3.616999           |
-| Įrašų rūšiavimo laikas                 | 1.502412                   | 0.450904s     | 0.718605               | 0.760519           | 0.796152          | 0.450904           |
-| Įrašų dalijimo į dvi grupes laikas     | 3.325965                   | 3.434312s     | 3.598118               | 3.614732           | 4.774052          | 3.434312           |
-| Slabakų išvedimo į failą laikas        | 2.286499                   | 2.442912s     | 2.486440               | 2.461227           | 3.704613          | 2.442912           |
-| Ramekų išvedimo į failą laikas         | 3.325965                   | 3.434312s     | 3.598118               | 3.614732           | 4.774052          | 3.434312           |
+| Veiksmas                               | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
+|----------------------------------------|-------------------------|---------------------|-------------------|---------------------|
+| Failo iš įrašų nuskaitymo laikas       | 3.861661               | 3.714822           | 5.004823          | 3.881836           |
+| Įrašų rūšiavimo laikas                 | 0.718605               | 0.760519           | 0.796152          | 0.723616           |
+| Įrašų dalijimo į dvi grupes laikas     | 3.598118               | 3.614732           | 4.774052          | 3.599115           |
+| Slabakų išvedimo į failą laikas        | 2.486440               | 2.461227           | 3.704613          | 2.475142           |
+| Ramekų išvedimo į failą laikas         | 3.598118               | 3.614732           | 4.774052          | 3.599115           |
+
 
 - ### 10 000 000:
-| Veiksmas                               | strategija_1 su vektoriais | strategija_1 su listais | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
-|----------------------------------------|----------------------------|---------------|------------------------|---------------------|-------------------|---------------------|
-| Failo iš įrašų nuskaitymo laikas       | 37.966504                  | 37.363967s    | 41.412445              | 57.873212          | 40.479116         | 37.363967          |
-| Įrašų rūšiavimo laikas                 | 19.345238                  | 7.210146s     | 11.034102              | 11.589878          | 10.675159         | 7.210146           |
-| Įrašų dalijimo į dvi grupes laikas     | 34.917649                  | 35.268519s    | 36.868533              | 35.156699          | 35.817448         | 35.268519          |
-| Slabakų išvedimo į failą laikas        | 24.457310                  | 24.865331s    | 25.938105              | 25.236396          | 25.221774         | 24.865331          |
-| Ramekų išvedimo į failą laikas         | 34.917649                  | 35.268519s    | 36.868533              | 35.156699          | 35.817448         | 35.268519          |
+| Veiksmas                               | 2_strategija vektoriai | 2_strategija listai | list su remove_if | remove_if vektoriai |
+|----------------------------------------|-------------------------|---------------------|-------------------|---------------------|
+| Failo iš įrašų nuskaitymo laikas       | 41.412445              | 57.873212          | 40.479116         | 57.789181          |
+| Įrašų rūšiavimo laikas                 | 11.034102              | 11.589878          | 10.675159         | 19.870714          |
+| Įrašų dalijimo į dvi grupes laikas     | 36.868533              | 35.156699          | 35.817448         | 34.317678          |
+| Slabakų išvedimo į failą laikas        | 25.938105              | 25.236396          | 25.221774         | 24.151542          |
+| Ramekų išvedimo į failą laikas         | 36.868533              | 35.156699          | 35.817448         | 34.317678          |
 
 
   
