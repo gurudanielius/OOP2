@@ -1,5 +1,6 @@
 # OOP
-### Apie programa: studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutinį rezultatą pagal namų darbų ir egzamino balus.
+### Apie programa: 
+Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutinį rezultatą pagal namų darbų ir egzamino balus.
 # Kompiuterio specifikacijos:
 - Processor AMD Ryzen 9 6900HS with Radeon Graphics, 3301 Mhz, 3.30 GHz, 8 Core(s), 16 Logical Processor(s),
 - Installed Physical Memory (RAM)	16.0 GB
