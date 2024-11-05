@@ -39,7 +39,7 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
 
 #  v1.0
 ### Pokyčiai:
-Dabar pateikiamos skirtingos programos realizacijos naudojant skirtingas studentų rūšiavimo strategijas (fill).
+Dabar pateikiamos skirtingos programos realizacijos naudojant skirtingas studentų rūšiavimo strategijas (bendro studentai konteinerio skaidymas, bendro konteinerio skaidymas panaudojant tik vieną naują konteinerį, efektyvesnės strategijos realizavimas naudojant "efektyvesius" metodus).
 ### Strategijų aprašymas:
 - 1 strategija: 
         bendro studentai konteinerio (vector ir list tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "slabakai" ir "ramekai".
