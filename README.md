@@ -74,6 +74,8 @@ Rūšiavimas greičiausiai veikia:
 | list su remove_if      | 0.004269                        | 0.000740              | 0.000280                          | 0.003222                       | 0.003959                      |
 | remove_if vektoriai    | 0.004293                        | 0.000202              | 0.000378                          | 0.002965                       | 0.003825                      |
 
+![output(13)](https://github.com/user-attachments/assets/08db99fe-f86b-4a6f-b463-eee48310f15f)
+
 
 ### 10,000
 |                        | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
@@ -85,6 +87,7 @@ Rūšiavimas greičiausiai veikia:
 | list su remove_if      | 0.037578                        | 0.008996              | 0.002608                         | 0.028195                       | 0.040938                      |
 | remove_if vektoriai    | 0.038736                        | 0.002506              | 0.002670                          | 0.024515                       | 0.035155                      |
 
+![output(14)](https://github.com/user-attachments/assets/78cd9c09-b719-4a24-a5e4-69b73b2996d0)
 
 
 ### 100,000
@@ -97,6 +100,8 @@ Rūšiavimas greičiausiai veikia:
 | list su remove_if      | 0.392623                        | 0.039085              | 0.037620                          | 0.255086                       | 0.355554                      |
 | remove_if vektoriai    | 0.388184                        | 0.723616              | 0.017214                          | 0.264142                       | 0.351554                      |
 
+![output(15)](https://github.com/user-attachments/assets/b9645947-6036-4360-bd5b-7c0fc5eb9804)
+
 ### 1,000,000
 |                        | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
 |------------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
@@ -107,6 +112,8 @@ Rūšiavimas greičiausiai veikia:
 | list su remove_if      | 5.004823                        | 0.796152              | 0.376493                          | 3.704613                       | 4.774052                      |
 | remove_if vektoriai    | 3.881836                        | 0.723616              | 0.194551                          | 2.475142                       | 3.599115                      |
 
+![output(16)](https://github.com/user-attachments/assets/679dc2fc-a76b-4977-806d-90f7fcef5465)
+
 ### 10,000,000
 |                        | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
 |------------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
@@ -116,6 +123,8 @@ Rūšiavimas greičiausiai veikia:
 | 2_strategija listai    | 57.873212                       | 11.589878             | 4.099502                         | 25.236396                      | 35.156699                     |
 | list su remove_if      | 40.479116                       | 10.675159             | 8.287767                        | 25.221774                      | 35.817448                     |
 | remove_if vektoriai    | 57.789181                       | 19.870714             | 3.535079                        | 24.151542                      | 34.317678                     |
+
+![output(17)](https://github.com/user-attachments/assets/7a678140-b0f2-45ce-81eb-4f18f66a8269)
 
 
 #  v0.3
