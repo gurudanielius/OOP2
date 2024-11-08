@@ -366,7 +366,7 @@ void segregacija(vector<Stud> v1) {
     {
         cout<<"Failo is "+ std::to_string(lines_num) + " irasu nuskaitymo laikas: " + std::to_string(nuskaitymo_failo_t)<<"s."<<endl;
         cout<<std::to_string(lines_num) + " irasu rusiavimo laikas: "+ std::to_string(sort_t)<<"s."<<endl;
-        cout<<std::to_string(lines_num) + " irasu dalijimo i dvi grupes laikas: "+std::to_string(ramiakai_output_t)<<"s."<<endl;
+        cout<<std::to_string(lines_num) + " irasu dalijimo i dvi grupes laikas: "+std::to_string(segregacija_t)<<"s."<<endl;
         cout<<std::to_string(lines_num) + " slabaku isvedimo i faila laikas: "+std::to_string(slabakai_output_t)<<"s."<<endl;
         cout<<std::to_string(lines_num) + " rameku isvedimo i faila laikas: "+std::to_string(ramiakai_output_t)<<"s."<<endl;
     }
