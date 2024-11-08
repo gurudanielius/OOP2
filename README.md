@@ -56,10 +56,10 @@ Dabar pateikiamos skirtingos programos realizacijos naudojant skirtingas student
 ### Laikai
 Kiekvienas laikas kiekvienam kiekiui ir strategijai buvo matuojamas 5 kartus ir išvestas vidurkis
 Rūšiavimas greičiausiai veikia:
-- 1000: su 3_strategija ir vektoriais.
-- 10000: 1_strategija vektoriai
-- 100000: 1_strategija vektoriai
-- 1000000: 1_strategija vektoriai
+- 1000: su 3_strategija ir list.
+- 10000: 3_strategija list
+- 100000: 3_strategija vektoriai
+- 1000000: 3_strategija vektoriai
 - 10000000: remove_if vektoriai.
 
 
@@ -92,30 +92,30 @@ Rūšiavimas greičiausiai veikia:
 |------------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
 | 1_strategija vektoriai | 0.356733                        | 0.114551              | 0.033200                          | 0.228788                       | 0.333200                      |
 | 1_strategija listai    | 0.363788                        | 0.027505              | 0.033392                          | 0.240831                       | 0.343392                      |
-| 2_strategija vektoriai | 0.391728                        | 0.040480              | 0.017277                          | 0.249972                       | 0.357057                      |
+| 2_strategija vektoriai | 0.391728                        | 0.040480              | 143.312432                          | 0.249972                       | 0.357057                      |
 | 2_strategija listai    | 0.384077                        | 0.043515              | 0.018041                          | 0.255114                       | 0.356047                      |
 | list su remove_if      | 0.392623                        | 0.039085              | 0.037620                          | 0.255086                       | 0.355554                      |
-| remove_if vektoriai    | 0.388184                        | 0.723616              | 0.046488                          | 0.264142                       | 0.351554                      |
+| remove_if vektoriai    | 0.388184                        | 0.723616              | 0.017214                          | 0.264142                       | 0.351554                      |
 
 ### 1,000,000
 |                        | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
 |------------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
 | 1_strategija vektoriai | 3.614022                        | 1.502412              | 0.325965                          | 2.286499                       | 3.325965                      |
 | 1_strategija listai    | 3.616999                        | 0.450904              | 0.334312                          | 2.442912                       | 3.434312                      |
-| 2_strategija vektoriai | 3.796677                        | 0.857301              | 0.176847                          | 2.677529                              |   3.804267                            |
+| 2_strategija vektoriai | -                        | -              | -                          | -                           |   -                        |
 | 2_strategija listai    | 3.714822                        | 0.760519              | 0.184551                          | 2.461227                       | 3.614732                      |
 | list su remove_if      | 5.004823                        | 0.796152              | 0.376493                          | 3.704613                       | 4.774052                      |
-| remove_if vektoriai    | 3.881836                        | 0.723616              | 0.375846                          | 2.475142                       | 3.599115                      |
+| remove_if vektoriai    | 3.881836                        | 0.723616              | 0.194551                          | 2.475142                       | 3.599115                      |
 
 ### 10,000,000
 |                        | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
 |------------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
 | 1_strategija vektoriai | 37.966504                       | 19.345238             | 9.914230                         | 24.457310                      | 34.917649                     |
 | 1_strategija listai    | 37.363967                       | 7.210146              | 10.168519                         | 24.865331                      | 35.268519                     |
-| 2_strategija vektoriai | 38.594943                       | 11.910164             | 2.17387                         | 30.363426                     | 39.048130       | 
-| 2_strategija listai    | 57.873212                       | 11.589878             | 2.099502                         | 25.236396                      | 35.156699                     |
+| 2_strategija vektoriai |-                  | -                      | -                                | -                    | -       | 
+| 2_strategija listai    | 57.873212                       | 11.589878             | 4.099502                         | 25.236396                      | 35.156699                     |
 | list su remove_if      | 40.479116                       | 10.675159             | 8.287767                        | 25.221774                      | 35.817448                     |
-| remove_if vektoriai    | 57.789181                       | 19.870714             | 7.486104                        | 24.151542                      | 34.317678                     |
+| remove_if vektoriai    | 57.789181                       | 19.870714             | 3.535079                        | 24.151542                      | 34.317678                     |
 
 
 #  v0.3
