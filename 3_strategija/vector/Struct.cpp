@@ -24,8 +24,7 @@ void ived(Stud & Lok)
             cout<<"Neteisingas pasirinkimas, bandykite dar karta. Kaip norite ivesti pazymius\nGeneruoti/Ivesti?"<<endl;
         }
     }
-    //Pasirinkimas ivesti/generuoti/nuskaityti
-    if (method==2) {
+ if (method==2) {
         cout<<"Vardas: "<<endl;
         cin>>temp_vardas;
 		Lok.setVardas(temp_vardas);
@@ -228,34 +227,6 @@ void output2(list<Stud> v,const string& file_name){
     }
 }
 
-// void vidurkis(Stud &Lok) {
-//     Lok.med = 0;
-//     Lok.vid = 0;
-//     for (int i = 0; i < Lok.getND().size(); i++) {
-//         Lok.vid += Lok.getND().at(i);
-//     }
-//     Lok.vid = Lok.vid / Lok.getND().size();
-//     if (Lok.getND().size() == 0) {
-//         Lok.vid = 0;
-//     }
-//     sort(Lok.getND().begin(), Lok.getND().end());
-//     if (Lok.getND().size() % 2 == 0) {
-//         Lok.med = (Lok.getND().at(Lok.getND().size() / 2 - 1) + Lok.getND().at(Lok.getND().size() / 2)) / 2;
-//     } else {
-//         Lok.med = Lok.getND().at(Lok.getND().size() / 2);
-//     }
-//     Lok.rez = 0.4 * Lok.vid + 0.6 * Lok.getEgz();
-// }
-
-// void mediana(Stud &Lok) {
-//     sort(Lok.getND().begin(), Lok.getND().end());
-//     if (Lok.getND().size() % 2 == 0) {
-//         Lok.med = (Lok.getND().at(Lok.getND().size() / 2 - 1) + Lok.getND().at(Lok.getND().size() / 2)) / 2;
-//     } else {
-//         Lok.med = Lok.getND().at(Lok.getND().size() / 2);
-//     }
-//     Lok.rez = 0.4 * Lok.med + 0.6 * Lok.getEgz();
-// }
 void vidurkis(Stud &Lok) {
     Lok.med = 0;
     Lok.vid = 0;
