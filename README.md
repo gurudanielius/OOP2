@@ -36,9 +36,9 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
 
 
 # v1.1
-### Aprašymas: 
+# Aprašymas: 
 Atsirado klasės realizacija, buvo pasirinktas vektoriaus tipo konteinerisi ir 3 dalinimo strategija (iš v1.0). Testuojami tik failai sudaryti iš 1 000 000 ir 10 000 000 studentų ir lyginami su atitinkama 'struct' tipo užduoties rezultatais. Taip pat išmatuotos O1, O2, O3 optimizavimo strategijų laikai. 
-### Repozitorijos klonavimas:
+# Repozitorijos klonavimas:
 1. Klonavimas:
 
           git clone https://github.com/gurudanielius/OOP/
@@ -48,9 +48,40 @@ Atsirado klasės realizacija, buvo pasirinktas vektoriaus tipo konteinerisi ir 3
 3. Nupushiname:
 
            git push -u origin v1.0
-   
 
-       
+# Spartos analizė:
+
+### 3 strategija su vektoriai `struct` ir `class` palyginimas:
+### 10 000 000:
+
+|                        | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
+|------------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
+| struct    | 57.789181                       | 19.870714             | 3.535079                        | 24.151542                      | 34.317678                     |
+| class | 80.741019 | 12.709376   | 11.763234 | 34.824793 | 50.290692 |
+
+
+### 1 000 000:
+|                        | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
+|------------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
+| struct    | 3.881836                        | 0.723616              | 0.194551                          | 2.475142                       | 3.599115                      |
+| class  | 9.087334                      |  0.927201             | 0.653186                         | 3.534493                       | 4.856127                     |
+
+### Optimizavimo strategijų (O1, O2, O3) laiko palyginimas:
+### 10 000 000:
+| Optimization Level | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
+|--------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
+| O1                | 64.868174                        | 10.089373             | 2.419835                          | 30.585810                     | 42.299866                     |
+| O2                | 47.086795                        | 10.124450             | 11.434581                         | 35.550312                     | 45.164128                     |
+| O3                | 53.879896                        | 8.736600              | 2.757521                          | 28.816459                     | 40.996770                     |
+
+### 1 000 000:
+| O | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
+|--------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
+| O1                | 5.372545                        | 0.641815              | 0.197577                         | 3.983004                      | 4.195077                     |
+| O2                | 6.024873                        | 0.798799              | 0.187038                         | 3.381920                      | 4.162692                     |
+| O3                | 5.134171                        | 0.801610              | 0.196136                         | 3.864410                      | 4.194973                     |
+
+
 #  v1.0
 ### Pokyčiai:
 Dabar pateikiamos skirtingos programos realizacijos naudojant skirtingas studentų rūšiavimo strategijas (bendro studentai konteinerio skaidymas, bendro konteinerio skaidymas panaudojant tik vieną naują konteinerį, efektyvesnės strategijos realizavimas naudojant "efektyvesius" metodus).
