@@ -41,7 +41,6 @@ void ived(Stud & Lok)
                 cin.clear();
                 cout << "Reikia ivesti skaiciu. Iveskite pazymiu skaiciu." << endl;
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
             }
         }
         for (int i=0;i<n;i++) {
@@ -107,7 +106,6 @@ list<Stud> nuskaitymas_is_failo(string tekstinis) {
             throw std::ios_base::failure("Nepavyko atidaryti failo");
         }
         string vardas, pavarde;
-
         getline(infile,eilute);
         istringstream iss(eilute);
         vector<string> tokens;
@@ -153,9 +151,6 @@ void val(Stud &Lok) {
     Lok.setPavarde("");
     Lok.setND(vector<double>());
 }
-
-
-
 void output(list<Stud> &v1) {
     if (rusiavimas==1) {
         v1.sort([](const Stud &a, const Stud &b) {
@@ -199,7 +194,6 @@ void output(list<Stud> &v1) {
             <<left<<setw(15)<<fixed<<setprecision(2)<<it->rez<<"    "
             <<left<<setw(20)<<fixed<<setprecision(2)<<&(*it)<<endl;
     }
-
 }
 void output2(list<Stud> v,const string& file_name){
     std::ofstream outputFile;
