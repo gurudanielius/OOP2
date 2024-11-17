@@ -56,6 +56,7 @@ int main() {
                         cout<<"Neteisingas pasirinkimas, bandykite dar karta. 1-vidurkis, 2-mediana"<<endl;
                     }
                 }
+
                 cout<<"Iveskite studentu skaiciu"<<endl;
                 while(true) {
                     if (cin>>lines_num) {
@@ -67,13 +68,11 @@ int main() {
                 }
                 for (int i=0;i<lines_num;i++) {
                     ived(Temp);
+                    cout<<"*********************************"<<endl;
                     v1.push_back(Temp);
                     val(Temp);
                 }
                 segregacija(v1);
-
-                //output
-
                 output(v1);
                 break;
             }
