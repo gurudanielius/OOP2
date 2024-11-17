@@ -1,6 +1,5 @@
 #include "Struct.h"
 #include "header.h"
-//TODO: Realizacija pritaikyt prie klasiu o ne strukturu
 int rusiavimas;
 std::chrono::steady_clock::time_point  DabartinisLaikas() {
     return std::chrono::steady_clock::now();
@@ -48,7 +47,6 @@ void ived(Stud & Lok)
         for (int i=0;i<n;i++) {
             temp_ND.push_back(rand()%10+1);
         }
-        std::cout << "Egzamino rezultatas: " << Lok.getEgz() << std::endl;
 		Lok.setND(temp_ND);
     }
     else {
