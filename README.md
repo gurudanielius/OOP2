@@ -35,7 +35,9 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
        cmake --build . --config [Release arba Debug]
 
 
-
+# v1.1
+### Pokyčiai
+### Aprašymas: Naudosime vektoriaus tipo konteinerį ir 3 dalinimo strategiją (iš v1.0).
 
 #  v1.0
 ### Pokyčiai:
