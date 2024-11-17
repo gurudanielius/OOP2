@@ -38,7 +38,19 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
 # v1.1
 ### Pokyčiai
 ### Aprašymas: Naudosime vektoriaus tipo konteinerį ir 3 dalinimo strategiją (iš v1.0).
+### Repozitorijos klonavimas:
+1. Klonavimas:
 
+          git clone https://github.com/gurudanielius/OOP/
+2. Pasikeičiam remote adresą:
+   
+          git remote set-url origin https://github.com/gurudanielius/OOP2
+3. Nupushiname:
+
+           git push -u origin v1.0
+   
+
+       
 #  v1.0
 ### Pokyčiai:
 Dabar pateikiamos skirtingos programos realizacijos naudojant skirtingas studentų rūšiavimo strategijas (bendro studentai konteinerio skaidymas, bendro konteinerio skaidymas panaudojant tik vieną naują konteinerį, efektyvesnės strategijos realizavimas naudojant "efektyvesius" metodus).
