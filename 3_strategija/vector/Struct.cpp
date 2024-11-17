@@ -1,5 +1,6 @@
 #include "Struct.h"
 #include "header.h"
+//TODO: Realizacija pritaikyt prie klasiu o ne strukturu
 int rusiavimas;
 std::chrono::steady_clock::time_point  DabartinisLaikas() {
     return std::chrono::steady_clock::now();
@@ -11,6 +12,9 @@ void ived(Stud & Lok)
 {
     cout << "Ar norite ivesti pazymius rankiniu budu, ar generuoti atsitiktinai? (1-ivesti/2-Generuoti) " << endl;
     int method;
+    string temp_vardas,temp_pavarde;
+    vector<double> temp_ND;
+
     while (true) {
         cin>>method;
         if (method==2 || method==1) {
@@ -21,12 +25,14 @@ void ived(Stud & Lok)
         }
     }
     //Pasirinkimas ivesti/generuoti/nuskaityti
-    if (method==1||method==2) {
+    if (method==2) {
         cout<<"Vardas: "<<endl;
-        cin>>Lok.vardas;
+        cin>>temp_vardas;
+		Lok.setVardas(temp_vardas);
         cout<<"Pavarde: "<<endl;
-        cin>>Lok.pavarde;
-        Lok.egz=rand()%10+1;
+        cin>>temp_pavarde;
+		Lok.setPavarde(temp_pavarde);
+        Lok.setEgz(rand() % 10 + 1);
         int n;
         cout << "Iveskite pazymiu skaiciu: " << endl;
         while (true) {
@@ -40,23 +46,26 @@ void ived(Stud & Lok)
 
             }
         }
-        cout<<"*********************************"<<endl;
-
         for (int i=0;i<n;i++) {
-            Lok.ND.push_back(rand()%10+1);
+            temp_ND.push_back(rand()%10+1);
         }
+        std::cout << "Egzamino rezultatas: " << Lok.getEgz() << std::endl;
+		Lok.setND(temp_ND);
     }
     else {
-        cout<<"Vardas: "<<endl;
-        cin>>Lok.vardas;
-        cout<<"Pavarde: "<<endl;
-        cin>>Lok.pavarde;
-        double temp;
+        cout << "Vardas: " << endl;
+        cin >> temp_vardas;
+        Lok.setVardas(temp_vardas);
+        cout << "Pavarde: " << endl;
+        cin >> temp_pavarde;
+        Lok.setPavarde(temp_pavarde);
+        double temp,egz_temp;
         cout<<"Iveskite namu darbu rezultatus noredami uzbaigti iveskite -1: "<<endl;
+        
         while (true) {
 
             if(cin>>temp && temp>=1 && temp<=10) {
-                Lok.ND.push_back(temp);
+                temp_ND.push_back(temp);
             }
             else if (temp==-1) {
                 break;
@@ -66,10 +75,13 @@ void ived(Stud & Lok)
                 cout<<"Iveskite tinkama pazymi nuo 1 iki 10. Noredami uzbaigti iveskite -1"<<endl;
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
+
         }
+        Lok.setND(temp_ND);
         cout << "Iveskite egzamino rezultata: " << endl;
         while(true) {
-            if(cin>>Lok.egz && Lok.egz>=1 && Lok.egz<=10) {
+            if(cin>>egz_temp && egz_temp>=1 && egz_temp<=10) {
+				Lok.setEgz(egz_temp);
                 break;
             }
             else {
@@ -80,7 +92,6 @@ void ived(Stud & Lok)
         }
     }
 
-    //Pasirinkimas tarp vidurkio ir medianos
     if (choice=="1") {
         vidurkis(Lok);
     }
@@ -88,16 +99,17 @@ void ived(Stud & Lok)
         mediana(Lok);
     }
 }
-// TODO pataisyt
 list<Stud> nuskaitymas_is_failo(string tekstinis) {
     try{
         list<Stud> v1;
+        double egz;
         Stud Temp;
         std::ifstream infile(tekstinis);
         string eilute,token;
         if (!infile.is_open()) {
             throw std::ios_base::failure("Nepavyko atidaryti failo");
         }
+        string vardas, pavarde;
 
         getline(infile,eilute);
         istringstream iss(eilute);
@@ -109,14 +121,19 @@ list<Stud> nuskaitymas_is_failo(string tekstinis) {
         while(getline(infile,eilute)) {
             istringstream iss(eilute);
             lines_num++;
-            iss>>Temp.vardas>>Temp.pavarde;
-            Temp.ND.clear();
+            iss >>vardas>> pavarde;
+			Temp.setVardas(vardas);
+			Temp.setPavarde(pavarde);
             int ivertinimas;
+			vector<double> ND_temp;
+			ND_temp.clear();
             for (int i = 0; i < number_of_nd; i++) {
                 iss >> ivertinimas;
-                Temp.ND.push_back(ivertinimas);
+				ND_temp.push_back(ivertinimas);
             }
-            iss >> Temp.egz;
+            Temp.setND(ND_temp);
+            iss >> egz;
+			Temp.setEgz(egz);
             if (choice=="1") {
                 vidurkis(Temp);
             }
@@ -134,16 +151,23 @@ list<Stud> nuskaitymas_is_failo(string tekstinis) {
         std::terminate();
     }
 }
+void val(Stud &Lok) {
+    Lok.setVardas("");
+    Lok.setPavarde("");
+    Lok.setND(vector<double>());
+}
+
+
 
 void output(list<Stud> &v1) {
     if (rusiavimas==1) {
         v1.sort([](const Stud &a, const Stud &b) {
-            return a.vardas < b.vardas;
+            return a.getVardas()< b.getVardas();
         });
     }
     else if (rusiavimas==2) {
         v1.sort([](const Stud &a, const Stud &b) {
-            return a.pavarde < b.pavarde;
+            return a.getPavarde() < b.getPavarde();
         });
     }
     else if (rusiavimas==3) {
@@ -171,8 +195,8 @@ void output(list<Stud> &v1) {
          <<left<<setw(20) << "Adresas" << endl;
 
     for (auto it =v1.begin(); it != v1.end(); ++it) {
-        cout<<left<<setw(15)<<it->vardas << "    "
-            <<left<<setw(15)<<it->pavarde << "    "
+        cout<<left<<setw(15)<<it-> getVardas()<< "    "
+            <<left<<setw(15)<<it-> getPavarde()<< "    "
             <<left<<setw(15)<<fixed<<setprecision(2)<<it->med << "    "
             <<left<<setw(15)<<fixed<<setprecision(2)<<it->vid << "    "
             <<left<<setw(15)<<fixed<<setprecision(2)<<it->rez<<"    "
@@ -190,8 +214,8 @@ void output2(list<Stud> v,const string& file_name){
        <<left<<setw(15) << "Galutinis (Vid.)" << endl;
     if (outputFile.is_open()) {
         for (auto it = v.begin(); it != v.end(); ++it) {
-    outputFile << left << setw(15) << it->vardas << "    "
-               << left << setw(15) << it->pavarde << "    "
+    outputFile << left << setw(15) << it->getVardas()<< "    "
+               << left << setw(15) << it->getPavarde() << "    "
                << left << setw(15) << fixed << setprecision(2) << it->vid << "    "
                << left << setw(15) << fixed << setprecision(2) << it->med << "    "
                << left << setw(15) << fixed << setprecision(2) << it->rez << endl;
@@ -203,47 +227,67 @@ void output2(list<Stud> v,const string& file_name){
         cout << file_name+" :Unable to open the file!" << std::endl;
     }
 }
-void val(Stud & Lok) {
-    Lok.vardas.clear();
-    Lok.pavarde.clear();
-    Lok.ND.clear();
-}
-void vidurkis(Stud &Lok) {
-    Lok.med=0;
-    Lok.vid=0;
-    for (int i=0;i<Lok.ND.size();i++) {
-        Lok.vid+=Lok.ND.at(i);
-    }
-    Lok.vid=Lok.vid/Lok.ND.size();
-    if (Lok.ND.size()==0) {
-        Lok.vid=0;
-    }
-    sort(Lok.ND.begin(), Lok.ND.end());
-    if (Lok.ND.size()%2==0) {
-        Lok.med=(Lok.ND.at(Lok.ND.size()/2-1)+Lok.ND.at(Lok.ND.size()/2))/2;
-    }
-    else {
-        Lok.med=Lok.ND.at(Lok.ND.size()/2);
-    }
-    Lok.rez=0.4*Lok.vid+0.6*Lok.egz;
-}
-void mediana(Stud &Lok) {
-    for (int i=0;i<Lok.ND.size();i++) {
-        Lok.vid+=Lok.ND.at(i);
-    }
-    Lok.vid=Lok.vid/Lok.ND.size();
-    if (Lok.ND.size()==0) {
-        Lok.vid=0;
-    }
-    sort(Lok.ND.begin(), Lok.ND.end());
-    if (Lok.ND.size()%2==0) {
-        Lok.med=(Lok.ND.at(Lok.ND.size()/2-1)+Lok.ND.at(Lok.ND.size()/2))/2;
-    }
-    else {
-        Lok.med=Lok.ND.at(Lok.ND.size()/2);
-    }
-    Lok.rez=0.4*Lok.med+0.6*Lok.egz;
 
+// void vidurkis(Stud &Lok) {
+//     Lok.med = 0;
+//     Lok.vid = 0;
+//     for (int i = 0; i < Lok.getND().size(); i++) {
+//         Lok.vid += Lok.getND().at(i);
+//     }
+//     Lok.vid = Lok.vid / Lok.getND().size();
+//     if (Lok.getND().size() == 0) {
+//         Lok.vid = 0;
+//     }
+//     sort(Lok.getND().begin(), Lok.getND().end());
+//     if (Lok.getND().size() % 2 == 0) {
+//         Lok.med = (Lok.getND().at(Lok.getND().size() / 2 - 1) + Lok.getND().at(Lok.getND().size() / 2)) / 2;
+//     } else {
+//         Lok.med = Lok.getND().at(Lok.getND().size() / 2);
+//     }
+//     Lok.rez = 0.4 * Lok.vid + 0.6 * Lok.getEgz();
+// }
+
+// void mediana(Stud &Lok) {
+//     sort(Lok.getND().begin(), Lok.getND().end());
+//     if (Lok.getND().size() % 2 == 0) {
+//         Lok.med = (Lok.getND().at(Lok.getND().size() / 2 - 1) + Lok.getND().at(Lok.getND().size() / 2)) / 2;
+//     } else {
+//         Lok.med = Lok.getND().at(Lok.getND().size() / 2);
+//     }
+//     Lok.rez = 0.4 * Lok.med + 0.6 * Lok.getEgz();
+// }
+void vidurkis(Stud &Lok) {
+    Lok.med = 0;
+    Lok.vid = 0;
+    int n=Lok.getND().size();
+    for (int i = 0; i < n; i++) {
+        Lok.vid += Lok.getND().at(i);
+    }
+    Lok.vid = Lok.vid / n;
+    if (n == 0) {
+        Lok.vid = 0;
+    }
+    vector<double> temp = Lok.getND();
+    sort(temp.begin(), temp.end());
+    if (n % 2 == 0) {
+        Lok.med = (temp.at(n / 2 - 1) + temp.at(n / 2)) / 2;
+    } else {
+        Lok.med = temp.at(n / 2);
+    }
+    Lok.rez = 0.4 * Lok.vid + 0.6 * Lok.getEgz();
+}
+
+void mediana(Stud &Lok) {
+    vector<double> temp = Lok.getND();
+
+    sort(temp.begin(), temp.end());
+
+    if (Lok.getND().size() % 2 == 0) {
+        Lok.med = (temp.at(Lok.getND().size() / 2 - 1) + temp.at(Lok.getND().size() / 2)) / 2;
+    } else {
+        Lok.med = Lok.getND().at(Lok.getND().size() / 2);
+    }
+    Lok.rez = 0.4 * Lok.med + 0.6 * Lok.getEgz();
 }
 void generavimas(int n, string failo_pavadinimas, int number_of_nd) {
     std::ofstream outputFile;
@@ -267,48 +311,7 @@ void generavimas(int n, string failo_pavadinimas, int number_of_nd) {
     }
     outputFile.close();
 }
-// void isvedimas(list<Stud> v1) {
-//     string output_choice;
-//     cout<<"Ar norite isvesti i faila? taip/ne "<<endl;
-//     while (true) {
-//         cin>>output_choice;
-//         if (output_choice=="taip" ||output_choice=="ne") {
-//             break;
-//         }
-//         else {
-//             cout<<"Neteisingas pasirinkimas, bandykite dar karta. taip/ne"<<endl;
-//         }
-//     }
-//     string sort_choice;
-//     cout<<"Ar norite isrusiuoti studentus pagal varda? taip/ne "<<endl;
-//     cin>>sort_choice;
-//     if (sort_choice=="taip") {
-//         sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
-//        return a.vardas < b.vardas;
-//          });
-//     }
-//     else if(sort_choice=="ne") {
-//         sort(v1.begin(), v1.end(), [](const Stud &a, const Stud &b) {
-//             return a.pavarde < b.pavarde;
-//         });
-//     }
-//
-//     if (output_choice=="ne") {
-//             cout <<left<<setw(10) << "Vardas" << "    "
-//                  <<left<<setw(10) << "Pavarde" << "    "
-//                  <<left<<setw(10) << "Vidurkis" << "    "
-//                  <<left<<setw(10) << "Mediana" << "    "
-//                  <<left<<setw(20) << "Galutinis" << endl;
-//
-//         cout << "-----------------------------------------------" << endl;
-//         for (auto it = v1.begin(); it != v1.end(); ++it) {
-//             output(*it);
-//         }
-//     }
-//     else {
-//         output2(v1,"rezik.txt");
-//     }
-// }
+
 void segregacija(list<Stud> &v1) {
     list<Stud> slabakai;
     auto segregacija_t0=DabartinisLaikas();
@@ -328,22 +331,15 @@ void segregacija(list<Stud> &v1) {
     cout<<"Pagal ka norite rusiuoti sugrupuotus studentus? (Vardas - 1/Pavarde - 2/ Mediana - 3/Vidurkis - 4/Galutini - 5) "<<endl;
     cin>>rusiavimas;
     auto sort_t0=DabartinisLaikas();
-    if (rusiavimas==1) {
-        slabakai.sort([](const Stud &a, const Stud &b) {
-            return a.vardas < b.vardas;
-        });
-
-        v1.sort([](const Stud &a, const Stud &b) {
-           return a.vardas < b.vardas;
-       });
+    if (rusiavimas == 1) {
+        v1.sort([](const Stud& a, const Stud& b) {
+            return a.getVardas() < b.getVardas();
+            });
     }
-    else if (rusiavimas==2) {
-    slabakai.sort([](const Stud &a, const Stud &b) {
-        return a.pavarde < b.pavarde;
-    });
-    v1.sort([](const Stud &a, const Stud &b) {
-        return a.pavarde < b.pavarde;
-    });
+    else if (rusiavimas == 2) {
+        v1.sort([](const Stud& a, const Stud& b) {
+            return a.getPavarde() < b.getPavarde();
+            });
     }
     else if (rusiavimas==3) {
         slabakai.sort([](const Stud &a, const Stud &b) {
