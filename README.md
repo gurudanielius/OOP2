@@ -50,7 +50,7 @@ Atsirado klasės realizacija, buvo pasirinktas vektoriaus tipo konteinerisi ir 3
            git push -u origin v1.0
 
 # Spartos analizė:
-
+ Didesnius duomenų kiekius greičiausiai dalina class ir O1 optimizavimas (lenkia net ir struct) , tuo tarpu mažesnius greičiausiai dalina class O2 optimizavimas (taip pat lenkia struct). Jei class nėra optimizuota, tai  struct dalina greičiau tiek mažesnius, tiek didesnius duomenų kiekius, tokiu atveju struct programos laikas yra trumpesnis visose 5 mat uotose srityse (apart 10 000 000 rūšiavimo laiko).
 ### 3 strategija su vektoriai `struct` ir `class` palyginimas:
 ### 10 000 000:
 
