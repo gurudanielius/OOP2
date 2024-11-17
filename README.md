@@ -36,8 +36,8 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
 
 
 # v1.1
-### Pokyčiai
-### Aprašymas: Naudosime vektoriaus tipo konteinerį ir 3 dalinimo strategiją (iš v1.0).
+### Aprašymas: 
+Atsirado klasės realizacija, buvo pasirinktas vektoriaus tipo konteinerisi ir 3 dalinimo strategija (iš v1.0). Testuojami tik failai sudaryti iš 1 000 000 ir 10 000 000 studentų ir lyginami su atitinkama 'struct' tipo užduoties rezultatais. Taip pat išmatuotos O1, O2, O3 optimizavimo strategijų laikai. 
 ### Repozitorijos klonavimas:
 1. Klonavimas:
 
