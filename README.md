@@ -71,7 +71,7 @@ Atsirado klasės realizacija, buvo pasirinktas vektoriaus tipo konteinerisi ir 3
 | Optimization Level | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
 |--------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
 | O1                | 64.868174                        | 10.089373             | 2.419835                          | 30.585810                     | 42.299866                     |
-| O2                | 47.086795                        | 10.124450             | 11.434581                         | 35.550312                     | 45.164128                     |
+| O2                | 47.086795                        | 9.124450             | 2.434581                         | 35.550312                     | 52.164128                     |
 | O3                | 53.879896                        | 8.736600              | 2.757521                          | 28.816459                     | 40.996770                     |
 
 ### 1 000 000:
