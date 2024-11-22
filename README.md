@@ -81,6 +81,14 @@ Atsirado klasės realizacija, buvo pasirinktas vektoriaus tipo konteinerisi ir 3
 | O2                | 6.024873                        | 0.798799              | 0.187038                         | 3.381920                      | 4.162692                     |
 | O3                | 5.134171                        | 0.801610              | 0.196136                         | 3.864410                      | 4.194973                     |
 
+### 100 000 Įrašų Laikų Palyginimas
+| Optimizacijos Lygis | Failo iš įrašų nuskaitymo laikas (s) | Įrašų rūšiavimo laikas (s) | Įrašų dalijimo į dvi grupes laikas (s) | Slabakų išvedimo į failą laikas (s) | Ramekų išvedimo į failą laikas (s) |
+|----------------------|--------------------------------------|----------------------------|---------------------------------------|------------------------------------|-------------------------------------|
+| O1 | 0.621154 | 0.025546 | 0.026564 | 0.417193 | 0.648291 |
+| O2                  | 0.737948                            | 0.024996                  | 0.037737                              | 0.644192                           | 0.632701                            |
+| O3 | 0.616188 | 0.026672 | 0.029621 | 0.397278 | 0.632775 |
+
+
 
 #  v1.0
 ### Pokyčiai:
