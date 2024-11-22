@@ -66,6 +66,13 @@ Atsirado klasės realizacija, buvo pasirinktas vektoriaus tipo konteinerisi ir 3
 | struct    | 3.881836                        | 0.723616              | 0.194551                          | 2.475142                       | 3.599115                      |
 | class  | 9.087334                      |  0.927201             | 0.653186                         | 3.534493                       | 4.856127                     |
 
+
+###  100 000:
+|                        | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
+|------------------------|----------------------------------|------------------------|-----------------------------------|--------------------------------|-------------------------------|
+| struct      | 0.392623                        | 0.039085              | 0.037620                          | 0.255086                       | 0.355554                      |
+| class  | 1.017983                      |  0.054632             | 0.058039                         | 0.513572                       | 0.580734                     |
+
 ### Optimizavimo strategijų (O1, O2, O3) laiko palyginimas:
 ### 10 000 000:
 | Optimization Level | Failo iš įrašų nuskaitymo laikas | Įrašų rūšiavimo laikas | Įrašų dalijimo į dvi grupes laikas | Slabakų išvedimo į failą laikas | Ramekų išvedimo į failą laikas |
