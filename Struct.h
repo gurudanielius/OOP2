@@ -30,17 +30,17 @@ public:
 		this->egz = a.egz;
 		this->rez = a.rez;
 	}
-	// Stud& operator=(Stud& a) {
-	// 	if (this == &a) return *this;
-	// 	this->vardas = a.vardas;
-	// 	this->pavarde = a.pavarde;
-	// 	this->ND = a.ND;
-	// 	this->egz = a.egz;
-	// 	this->vid = a.vid;
-	// 	this->med = a.med;
-	// 	this->rez = a.rez;
-	// 	return *this;
-	// }
+	Stud& operator=(Stud& a) {
+		if (this == &a) return *this;
+		this->vardas = a.vardas;
+		this->pavarde = a.pavarde;
+		this->ND = a.ND;
+		this->egz = a.egz;
+		this->vid = a.vid;
+		this->med = a.med;
+		this->rez = a.rez;
+		return *this;
+	}
 };
 
     void ived(Stud & Lok);
