@@ -1,23 +1,31 @@
 #include "header.h"
-class Stud {
+
+class zmogus {
+ private:
 	string vardas;
 	string pavarde;
+ public:
+	string getVardas() const { return vardas; }
+	string getPavarde() const { return pavarde; }
+	void setVardas(string vardas) { this->vardas = vardas; }
+	void setPavarde(string pavarde) { this->pavarde = pavarde; }
+	virtual void abstraktiFunkcija() const = 0;
+};
+class Stud : public zmogus {
 	vector<double> ND;
 	double egz;
-
 public:
+	void abstraktiFunkcija() const override {
+
+	}
 	double vid;
 	double med;
 	double rez;
 	~Stud() { }
 	Stud() : egz(0) { };
 	Stud(std::istream& is);
-	string getVardas() const { return vardas; }
-	string getPavarde() const { return pavarde; }
 	vector<double> getND() const { return ND; }
 	double getEgz() const { return egz; }
-	void setVardas(string vardas) { this->vardas = vardas; }
-	void setPavarde(string pavarde) { this->pavarde = pavarde; }
 	void setND(vector<double> ND) { this->ND = ND; }
 	void setEgz(double egz) { this->egz = egz; }
 	Stud(const Stud& a) {
