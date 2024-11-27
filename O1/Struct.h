@@ -1,26 +1,48 @@
 #include "header.h"
 class Stud {
 	string vardas;
-        string pavarde;
-        vector<double> ND;
-        double egz;
+	string pavarde;
+	vector<double> ND;
+	double egz;
 
 public:
-    double vid;
-    double med;
-    double rez;
-~Stud() { }
+	double vid;
+	double med;
+	double rez;
+	~Stud() { }
 	Stud() : egz(0) { };
 	Stud(std::istream& is);
 	string getVardas() const { return vardas; }
 	string getPavarde() const { return pavarde; }
 	vector<double> getND() const { return ND; }
 	double getEgz() const { return egz; }
-    void setVardas(string vardas) { this->vardas = vardas; }
+	void setVardas(string vardas) { this->vardas = vardas; }
 	void setPavarde(string pavarde) { this->pavarde = pavarde; }
 	void setND(vector<double> ND) { this->ND = ND; }
 	void setEgz(double egz) { this->egz = egz; }
- };
+	// Stud(Stud& a) {
+	// 	this->vardas = a.vardas;
+	// 	this->pavarde = a.pavarde;
+	// 	this->ND = a.ND;
+	// 	this->egz = a.egz;
+	// 	this->vid = a.vid;
+	// 	this->med = a.med;
+	// 	this->egz = a.egz;
+	// 	this->rez = a.rez;
+	// }
+	// Stud& operator=(Stud& a) {
+	// 	if (this == &a) return *this;
+	// 	this->vardas = a.vardas;
+	// 	this->pavarde = a.pavarde;
+	// 	this->ND = a.ND;
+	// 	this->egz = a.egz;
+	// 	this->vid = a.vid;
+	// 	this->med = a.med;
+	// 	this->rez = a.rez;
+	// 	return *this;
+	// }
+};
+
     void ived(Stud & Lok);
     void vidurkis(Stud & Lok);
     void output(list <Stud> & Lok);
