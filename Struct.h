@@ -20,16 +20,16 @@ public:
 	void setPavarde(string pavarde) { this->pavarde = pavarde; }
 	void setND(vector<double> ND) { this->ND = ND; }
 	void setEgz(double egz) { this->egz = egz; }
-	// Stud(Stud& a) {
-	// 	this->vardas = a.vardas;
-	// 	this->pavarde = a.pavarde;
-	// 	this->ND = a.ND;
-	// 	this->egz = a.egz;
-	// 	this->vid = a.vid;
-	// 	this->med = a.med;
-	// 	this->egz = a.egz;
-	// 	this->rez = a.rez;
-	// }
+	Stud(Stud& a) {
+		this->vardas = a.vardas;
+		this->pavarde = a.pavarde;
+		this->ND = a.ND;
+		this->egz = a.egz;
+		this->vid = a.vid;
+		this->med = a.med;
+		this->egz = a.egz;
+		this->rez = a.rez;
+	}
 	// Stud& operator=(Stud& a) {
 	// 	if (this == &a) return *this;
 	// 	this->vardas = a.vardas;
