@@ -6,6 +6,25 @@ class Stud {
 	double egz;
 
 public:
+	friend std::istream& operator>>(std::istream& in, Stud& studentas) {
+		std::cout << "Iveskite varda: ";
+		in >> studentas.vardas;
+
+		std::cout << "Iveskite pavarde: ";
+		in >> studentas.pavarde;
+
+		return in;
+	}
+	friend std::ostream& operator<<(std::ostream& out, const Stud& studentas) {
+		out<<left<<setw(15)<<studentas.vardas<< "    "
+			<<left<<setw(15)<<studentas.pavarde<< "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.med << "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.vid << "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.rez<<"    "
+			<<left<<setw(20)<<fixed<<setprecision(2)<<&studentas<<endl;
+
+		return out;
+	}
 	double vid;
 	double med;
 	double rez;
@@ -42,7 +61,6 @@ public:
 		return *this;
 	}
 };
-
     void ived(Stud & Lok);
     void vidurkis(Stud & Lok);
     void output(list <Stud> & Lok);
