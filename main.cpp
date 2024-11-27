@@ -68,12 +68,11 @@ int main() {
                 }
                 for (int i=0;i<lines_num;i++) {
                     ived(Temp);
-                    cout<<"*********************************"<<endl;
                     v1.push_back(Temp);
                     val(Temp);
                 }
-                segregacija(v1);
                 output(v1);
+                segregacija(v1);
                 break;
             }
             case 3:{
