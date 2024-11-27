@@ -20,7 +20,7 @@ public:
 	void setPavarde(string pavarde) { this->pavarde = pavarde; }
 	void setND(vector<double> ND) { this->ND = ND; }
 	void setEgz(double egz) { this->egz = egz; }
-	Stud(Stud& a) {
+	Stud(const Stud& a) {
 		this->vardas = a.vardas;
 		this->pavarde = a.pavarde;
 		this->ND = a.ND;
@@ -30,7 +30,7 @@ public:
 		this->egz = a.egz;
 		this->rez = a.rez;
 	}
-	Stud& operator=(Stud& a) {
+	Stud& operator=(const Stud& a) {
 		if (this == &a) return *this;
 		this->vardas = a.vardas;
 		this->pavarde = a.pavarde;
