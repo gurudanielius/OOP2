@@ -7,10 +7,10 @@ class Stud {
 
 public:
 	friend std::istream& operator>>(std::istream& in, Stud& studentas) {
-		std::cout << "Iveskite varda: ";
+		std::cout << "Iveskite varda: "<<endl;
 		in >> studentas.vardas;
 
-		std::cout << "Iveskite pavarde: ";
+		std::cout << "Iveskite pavarde: "<<endl;
 		in >> studentas.pavarde;
 
 		return in;
