@@ -1,7 +1,7 @@
 #include "header.h"
 
 class zmogus {
- private:
+ protected:
 	string vardas;
 	string pavarde;
  public:
