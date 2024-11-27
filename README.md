@@ -33,8 +33,12 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
 4. Sukompiliuojame ir sukuriame .exe failą, taip pat galime pasirinkt konfigurijacija: Release arba Debug:
 
        cmake --build . --config [Release arba Debug]
+# v1.2
+Input pries operataroriu >> perrasyma:
+![img.png](img.png)
+![img_1.png](img_1.png)
 
-
+![img_2.png](img_2.png)
 # v1.1
 # Aprašymas: 
 Atsirado klasės realizacija, buvo pasirinktas vektoriaus tipo konteinerisi ir 3 dalinimo strategija (iš v1.0). Testuojami tik failai sudaryti iš 1 000 000 ir 10 000 000 studentų ir lyginami su atitinkama 'struct' tipo užduoties rezultatais. Taip pat išmatuotos O1, O2, O3 optimizavimo strategijų laikai. 
