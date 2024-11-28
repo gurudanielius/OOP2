@@ -39,6 +39,10 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
 - Sukurta bazinė, abstrakti klasė zmogus, turinti atributus vardas, pavardė, šių atributų seterius, geterius.
 - Virutalius metodus, kuris padaro klasę abstrakčia.
 - Studento klasė dabar yra išvestinė iš Bazinės.
+- Palaikoma trijų metodų taisyklė
+  - Destruktorius
+  - Kopijavimo konstruktorius perrašymas
+  - Kopijavimo operatorius perrašymas
 # Detalus aprašymas:
 
 - Klasė zmogus:
