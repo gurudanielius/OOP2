@@ -24,12 +24,7 @@ void ived(Stud & Lok)
         }
     }
  if (method==2) {
-        cout<<"Vardas: "<<endl;
-        cin>>temp_vardas;
-		Lok.setVardas(temp_vardas);
-        cout<<"Pavarde: "<<endl;
-        cin>>temp_pavarde;
-		Lok.setPavarde(temp_pavarde);
+     cin >> Lok;
         Lok.setEgz(rand() % 10 + 1);
         int n;
         cout << "Iveskite pazymiu skaiciu: " << endl;
@@ -49,12 +44,7 @@ void ived(Stud & Lok)
 		Lok.setND(temp_ND);
     }
     else {
-        cout << "Vardas: " << endl;
-        cin >> temp_vardas;
-        Lok.setVardas(temp_vardas);
-        cout << "Pavarde: " << endl;
-        cin >> temp_pavarde;
-        Lok.setPavarde(temp_pavarde);
+        cin>>Lok;
         double temp,egz_temp;
         cout<<"Iveskite namu darbu rezultatus noredami uzbaigti iveskite -1: "<<endl;
         
@@ -187,12 +177,7 @@ void output(list<Stud> &v1) {
          <<left<<setw(20) << "Adresas" << endl;
 
     for (auto it =v1.begin(); it != v1.end(); ++it) {
-        cout<<left<<setw(15)<<it-> getVardas()<< "    "
-            <<left<<setw(15)<<it-> getPavarde()<< "    "
-            <<left<<setw(15)<<fixed<<setprecision(2)<<it->med << "    "
-            <<left<<setw(15)<<fixed<<setprecision(2)<<it->vid << "    "
-            <<left<<setw(15)<<fixed<<setprecision(2)<<it->rez<<"    "
-            <<left<<setw(20)<<fixed<<setprecision(2)<<&(*it)<<endl;
+        cout<<*it<<endl;
     }
 }
 void output2(list<Stud> v,const string& file_name){
@@ -205,11 +190,7 @@ void output2(list<Stud> v,const string& file_name){
        <<left<<setw(15) << "Galutinis (Vid.)" << endl;
     if (outputFile.is_open()) {
         for (auto it = v.begin(); it != v.end(); ++it) {
-    outputFile << left << setw(15) << it->getVardas()<< "    "
-               << left << setw(15) << it->getPavarde() << "    "
-               << left << setw(15) << fixed << setprecision(2) << it->vid << "    "
-               << left << setw(15) << fixed << setprecision(2) << it->med << "    "
-               << left << setw(15) << fixed << setprecision(2) << it->rez << endl;
+    outputFile <<*it;
 }
         outputFile.close();
         cout << file_name+ " :Data written to the file successfully." << std::endl;
@@ -291,7 +272,7 @@ void segregacija(list<Stud> &v1) {
     auto segregacija_t1=DabartinisLaikas();
     segregacija_t=Skirtumas(segregacija_t0,segregacija_t1);
 
-    cout<<"Pagal ka norite rusiuoti sugrupuotus studentus? (Vardas - 1/Pavarde - 2/ Mediana - 3/Vidurkis - 4/Galutini - 5) "<<endl;
+    cout<<"Pagal ka norite rusiuoti sugrupuotus studentus i du failus? (Vardas - 1/Pavarde - 2/ Mediana - 3/Vidurkis - 4/Galutini - 5) "<<endl;
     cin>>rusiavimas;
     auto sort_t0=DabartinisLaikas();
     if (rusiavimas == 1) {
