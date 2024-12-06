@@ -34,6 +34,212 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
 
        cmake --build . --config [Release arba Debug]
 
+# v1.5
+# Aprašymas: 
+- Sukurta bazinė, abstrakti klasė zmogus, turinti atributus vardas, pavardė, šių atributų seterius, geterius.
+- Virutalius metodus, kuris padaro klasę abstrakčia.
+- Studento klasė dabar yra išvestinė iš Bazinės.
+- Palaikoma trijų metodų taisyklė
+  - Destruktorius
+  - Kopijavimo konstruktorius perrašymas
+  - Kopijavimo operatorius perrašymas
+# Detalus aprašymas:
+
+- Klasė zmogus:
+```cpp
+class zmogus {
+ protected:
+	string vardas;
+	string pavarde;
+ public:
+	string getVardas() const { return vardas; }
+	string getPavarde() const { return pavarde; }
+	void setVardas(string vardas) { this->vardas = vardas; }
+	void setPavarde(string pavarde) { this->pavarde = pavarde; }
+	virtual void abstraktiFunkcija() const = 0;
+};
+```
+- Klase Stud:
+```cpp
+class Stud : public zmogus {
+	vector<double> ND;
+	double egz;
+public:
+	void abstraktiFunkcija() const override {
+
+	}
+	friend std::istream& operator>>(std::istream& in, Stud& studentas) {
+		std::cout << "Iveskite varda: ";
+		in >> studentas.vardas;
+		std::cout << "Iveskite pavarde: ";
+		in >> studentas.pavarde;
+		return in;
+	}
+	friend std::ostream& operator<<(std::ostream& out, const Stud& studentas) {
+		out<<left<<setw(15)<<studentas.vardas<< "    "
+			<<left<<setw(15)<<studentas.pavarde<< "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.med << "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.vid << "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.rez<<"    "
+			<<left<<setw(20)<<fixed<<setprecision(2)<<&studentas<<endl;
+		return out;
+	}
+	double vid;
+	double med;
+	double rez;
+	~Stud() { }
+	Stud() : rez(10) { setVardas("petras"), setPavarde("petraitis"); };
+	Stud(std::istream& is);
+	vector<double> getND() const { return ND; }
+	double getEgz() const { return egz; }
+	void setND(vector<double> ND) { this->ND = ND; }
+	void setEgz(double egz) { this->egz = egz; }
+	Stud(const Stud& a) {
+		this->vardas = a.vardas;
+		this->pavarde = a.pavarde;
+		this->ND = a.ND;
+		this->egz = a.egz;
+		this->vid = a.vid;
+		this->med = a.med;
+		this->egz = a.egz;
+		this->rez = a.rez;
+	}
+	Stud& operator=(const Stud& a) {
+		if (this == &a) return *this;
+		this->vardas = a.vardas;
+		this->pavarde = a.pavarde;
+		this->ND = a.ND;
+		this->egz = a.egz;
+		this->vid = a.vid;
+		this->med = a.med;
+		this->rez = a.rez;
+		return *this;
+	}
+};
+```
+
+
+Bandymas sukurti žmogaus, bet ne studento objektą išmeta klaidą:
+
+```cpp
+zmogus Temp;
+
+```
+
+```cpp
+
+error: cannot declare variable 'Temp' to be of abstract type 'zmogus'
+   96 |             zmogus Temp;
+      |                    ^~~~
+```
+![image](https://github.com/user-attachments/assets/9cc7b83f-8b3a-441b-862f-e6e8a8c7f21e)
+
+Tačiau Studento sukūrimas puikiai veikia.
+```cpp
+ Stud zmogus;
+ cout<<zmogus<<endl;
+```
+![image](https://github.com/user-attachments/assets/1f0def3b-5901-428f-83a3-4b30e8250d31)
+
+# v1.2
+
+# Aprašymas:
+Realizuota Rule of three: perrašytas kopijavimo konstruktorius ir perrašytas "+" kopijavimo operatorius. Taip pat buvo perrašyti ">>" ir "<<" operatoriai.
+
+# Detalus aprašymas:
+Rule of three: 
+- ## Iš praeitos versijos paliktas destruktorius:
+ ``` cpp
+	~Stud() { }
+```
+- ## Perrašytas **kopijavimo operatorius**:
+   Šis operatorius suveikia tada, kai jau egzistuojantis objektas įgyja kito objekto reikšmes.
+  Kairėje esantis objektas įgyja lygybės dešinėje esančio objekto atributų reikšmes. Parametras Stud a yra `const` tipo ir reference type. Taip padaryta dėl to, kad jis būtų tik skaitomas ir būtų sutaupoma            atmintis   išvengiant nereikalingų kopijų.  skiriasi nuo tradicinio kopijaimo konstruktoriaus inicializavimo, nes nebuvo naudojama dinaminė kompiuterio atmintis 
+  ``` cpp
+  Stud& operator=(const Stud& a) {
+		if (this == &a) return *this;
+		this->vardas = a.vardas;
+		this->pavarde = a.pavarde;
+		this->ND = a.ND;
+		this->egz = a.egz;
+		this->vid = a.vid;
+		this->med = a.med;
+		this->rez = a.rez;
+		return *this;
+	}
+
+
+  
+- ## Perrašytas **kopijavimo konstruktorius**:
+   Kopijavimo konstruktorius taip pat buvo perrašytas panašiu principu, jis yra iškviečiamas kai naujai sukuriamas objektas įgyja jau egzistuojančio objekto reikšmes. Tai skiriasi nuo tradicinio kopijaimo konstruktoriaus inicializavimo, nes nebuvo      naudojama dinaminė kompiuterio atmintis 
+  ``` cpp
+  	Stud(const Stud& a) {
+		this->vardas = a.vardas;
+		this->pavarde = a.pavarde;
+		this->ND = a.ND;
+		this->egz = a.egz;
+		this->vid = a.vid;
+		this->med = a.med;
+		this->egz = a.egz;
+		this->rez = a.rez;
+	}
+
+- ## Perrašytas **>> operatorius**:
+  Dabar >> operatorius naudojamas su Stud objektu iškart įveda vardo ir pavardės atributus.
+  ```cpp
+       friend std::istream& operator>>(std::istream& in, Stud& studentas) {
+		std::cout << "Iveskite varda: "<<endl;
+		in >> studentas.vardas;
+
+		std::cout << "Iveskite pavarde: "<<endl;
+		in >> studentas.pavarde;
+
+		return in;
+	}
+  ```
+### Tai sutaupo kodo eilutes:
+![image](https://github.com/user-attachments/assets/be5ed90f-82b4-42b1-b58d-8fb511919146)
+
+
+
+- ## **Perrašytas << operatorius**: Dabar << operatorius naudojamas su Stud objektu iškart įveda vardo ir pavardės atributus.
+  ```cpp
+       	friend std::ostream& operator<<(std::ostream& out, const Stud& studentas) {
+		out<<left<<setw(15)<<studentas.vardas<< "    "
+			<<left<<setw(15)<<studentas.pavarde<< "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.med << "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.vid << "    "
+			<<left<<setw(15)<<fixed<<setprecision(2)<<studentas.rez<<"    "
+			<<left<<setw(20)<<fixed<<setprecision(2)<<&studentas<<endl;
+
+		return out;
+	}
+        ```
+ Dabar << operatorius iškart išveda vardo, pavardės, med, vid, rez atributus, taip pat nustato kairinė lygiuotę, tarpus bei skaičiaus tikslumą ten kur reikia. 
+ ### Tai sutaupo kodo eilučių tokiose vietose:
+![image](https://github.com/user-attachments/assets/6a876446-f75c-498d-9b7d-f6dc60728a97)
+![image](https://github.com/user-attachments/assets/51631762-dcdd-41ac-8010-fc559ff6e173)
+
+
+### 
+# User experience:
+Tiek įvedimas, tiek išvedimas vartotojui nepakito, pvz. duomenų įvedimas rankomis:
+### Prieš:
+![image](https://github.com/user-attachments/assets/a8bbe6e7-e6f6-4220-b1f1-0199b1734eb2)
+
+### Po:
+![image](https://github.com/user-attachments/assets/d924df44-9767-4d76-a9ba-2a64b930fede)
+
+## Išvedimo failai:
+
+### Prieš:
+![image](https://github.com/user-attachments/assets/39ac6b04-2acf-4724-898d-9c7ea7d3388d)
+
+
+### Po:
+![image](https://github.com/user-attachments/assets/8b39f8b2-d186-4f60-bc44-23014f4a4149)
+
+
 
 # v1.1
 # Aprašymas: 
