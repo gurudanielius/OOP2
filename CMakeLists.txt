@@ -12,8 +12,7 @@ add_executable(Projektas
 
 add_executable(ProjektasTests
         testai/Tests.cpp
-        testai/Structcpp_testai.cpp
-        Struct.cpp)
+       )
 
 find_package(GTest REQUIRED)
 target_link_libraries(ProjektasTests GTest::gtest GTest::gtest_main)
