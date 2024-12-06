@@ -92,9 +92,12 @@ int main() {
             case 10: {
                 cout<<"Failas uzdarytas"<< endl;
         }
+            Stud zmogus;
+            cout<<zmogus<<endl;
         }
 
     }
+
     while (pasirinkimas!=10);
     if (generavimo_failo_t!=0) {
         lines_num=number_of_students;

@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include "../Struct.h"
-
 TEST(Studentai, Konstruktorius) {
     Stud student;
     EXPECT_EQ(student.getVardas(), "petras");

@@ -5,6 +5,8 @@ class zmogus {
 	string vardas;
 	string pavarde;
  public:
+	virtual ~zmogus() = default;
+
 	string getVardas() const { return vardas; }
 	string getPavarde() const { return pavarde; }
 	void setVardas(string vardas) { this->vardas = vardas; }
@@ -38,7 +40,8 @@ public:
 	double med;
 	double rez;
 	~Stud() { }
-	Stud() : egz(0) { };
+	Stud() : rez(10) { setVardas("petras"), setPavarde("petraitis"); };
+	Stud(string vardas, string pavarde, vector<double> ND, double egz) :  ND(ND), egz(egz) {setVardas(vardas),setPavarde(pavarde);}
 	Stud(std::istream& is);
 	vector<double> getND() const { return ND; }
 	double getEgz() const { return egz; }
@@ -66,7 +69,6 @@ public:
 		return *this;
 	}
 };
-
     void ived(Stud & Lok);
     void vidurkis(Stud & Lok);
     void output(list <Stud> & Lok);
@@ -79,3 +81,10 @@ public:
     double Skirtumas(std::chrono::steady_clock::time_point pradzia, std::chrono::steady_clock::time_point pabaiga);
     list<Stud> nuskaitymas_is_failo(string file_name);
     void output_times(int lines_num,double nuskaitymo_failo_t, double sort_t, double segregacija_t, double slabakai_output_t, double ramiakai_output_t);
+
+extern std::string choice;
+extern int lines_num;
+extern double segregacija_t;
+extern double sort_t;
+extern double slabakai_output_t;
+extern double ramiakai_output_t;

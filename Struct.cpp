@@ -1,6 +1,14 @@
 #include "Struct.h"
 #include "header.h"
 int rusiavimas;
+// Struct.cpp
+std::string choice;
+int lines_num = 0;
+double segregacija_t = 0.0;
+double sort_t = 0.0;
+double slabakai_output_t = 0.0;
+double ramiakai_output_t = 0.0;
+
 std::chrono::steady_clock::time_point  DabartinisLaikas() {
     return std::chrono::steady_clock::now();
 }
