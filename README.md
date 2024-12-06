@@ -108,20 +108,6 @@ TEST(Studentai, CopyKonstruktorius) {
 }
 ```
 
-`Structcpp_testai.cpp`, testuojamas Struct.cpp funkcijų funkcionalumas: vidurkis. Testas sėkmingas:
-![image](https://github.com/user-attachments/assets/f0114c68-e9af-44fa-8a60-31bc988183f2)
-
-```cpp
-#include <gtest/gtest.h>
-#include "../Struct.h"
-
-TEST(Vidurkis, CalculateAverage) {
-    Stud student("Jonas", "Jonaitis", {5, 6, 7, 8, 9}, 10);
-    vidurkis(student);
-    EXPECT_NEAR(student.vid, 7.0, 0.00);
-    EXPECT_NEAR(student.rez, 8.8, 0.001);
-}
-```
 
 # v1.5
 # Aprašymas: 
