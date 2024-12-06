@@ -33,6 +33,95 @@ Tai yra studentų vertinimo sistema, leidžianti apskaičiuoti studentų galutin
 4. Sukompiliuojame ir sukuriame .exe failą, taip pat galime pasirinkt konfigurijacija: Release arba Debug:
 
        cmake --build . --config [Release arba Debug]
+# v2.0
+Aprašymas:
+- Cmake pritaikytas GTest frameworkui
+- Realizuoti unit testai
+- Sukurta Doxygen dokumentacija
+# Detalus aprašymas:
+
+`Cmake:`
+```cmake
+cmake_minimum_required(VERSION 3.29)
+project(OOP_v_pradin_)
+
+set(CMAKE_CXX_STANDARD 14)
+
+
+add_executable(Projektas
+        header.h
+        main.cpp
+        Struct.cpp
+        Struct.h)
+
+add_executable(ProjektasTests
+        testai/Tests.cpp
+        testai/Structcpp_testai.cpp
+        Struct.cpp)
+
+find_package(GTest REQUIRED)
+target_link_libraries(ProjektasTests GTest::gtest GTest::gtest_main)
+enable_testing()
+add_test(NAME ProjektasTests COMMAND ProjektasTests)
+
+```
+# Testai:
+
+`Tests.cpp`, čia testuojamas default konstruktorius, geteriai-seteriai, copy-constructor. 
+Testai sėkmingi: 
+![image](https://github.com/user-attachments/assets/9427f3d1-04d0-4872-8704-d3d3ff1bd2c5)
+
+
+```cpp
+#include <gtest/gtest.h>
+#include "../Struct.h"
+TEST(Studentai, Konstruktorius) {
+    Stud student;
+    EXPECT_EQ(student.getVardas(), "petras");
+    EXPECT_EQ(student.getPavarde(), "petraitis");
+    EXPECT_EQ(student.rez, 10);
+}
+
+TEST(Studentai, geteriai_seteriai) {
+    Stud student;
+    student.setVardas("vardas");
+    student.setPavarde("pavarde");
+    EXPECT_EQ(student.getVardas(), "vardas");
+    EXPECT_EQ(student.getPavarde(), "pavarde");
+}
+
+
+
+TEST(Studentai, CopyKonstruktorius) {
+    Stud student;
+    student.setVardas("vardas");
+    student.setPavarde("pavarde");
+    student.vid = 5;
+    student.med = 6;
+    student.rez = 7;
+    Stud student2 = student;
+    EXPECT_EQ(student2.getVardas(), "vardas");
+    EXPECT_EQ(student2.getPavarde(), "pavarde");
+    EXPECT_EQ(student2.vid, 5);
+    EXPECT_EQ(student2.med, 6);
+    EXPECT_EQ(student2.rez, 7);
+}
+```
+
+`Structcpp_testai.cpp`, testuojamas Struct.cpp funkcijų funkcionalumas: vidurkis. Testas sėkmingas:
+![image](https://github.com/user-attachments/assets/f0114c68-e9af-44fa-8a60-31bc988183f2)
+
+```cpp
+#include <gtest/gtest.h>
+#include "../Struct.h"
+
+TEST(Vidurkis, CalculateAverage) {
+    Stud student("Jonas", "Jonaitis", {5, 6, 7, 8, 9}, 10);
+    vidurkis(student);
+    EXPECT_NEAR(student.vid, 7.0, 0.00);
+    EXPECT_NEAR(student.rez, 8.8, 0.001);
+}
+```
 
 # v1.5
 # Aprašymas: 
@@ -59,6 +148,9 @@ class zmogus {
 	virtual void abstraktiFunkcija() const = 0;
 };
 ```
+
+
+
 - Klase Stud:
 ```cpp
 class Stud : public zmogus {
