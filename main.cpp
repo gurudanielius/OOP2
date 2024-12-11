@@ -89,9 +89,14 @@ int main() {
                 generavimo_failo_t=Skirtumas(generavimo_t1,generavimo_t2);
                 break;
             }
+            case 7:{
+                testas();
+                return 0;
+            }
             case 10: {
                 cout<<"Failas uzdarytas"<< endl;
         }
+
         }
 
     }
@@ -101,7 +106,6 @@ int main() {
         cout<<lines_num<<" generavimo laikas: "<<generavimo_failo_t<<"s. "<<endl;
     }
     output_times(lines_num,nuskaitymo_failo_t,sort_t,segregacija_t,slabakai_output_t,ramiakai_output_t);
-
     system("pause");
     return 0;
     }
