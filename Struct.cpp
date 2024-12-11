@@ -1,5 +1,6 @@
 #include "Struct.h"
 #include "header.h"
+#include <cassert>
 int rusiavimas;
 std::chrono::steady_clock::time_point  DabartinisLaikas() {
     return std::chrono::steady_clock::now();
@@ -330,4 +331,61 @@ void output_times(int lines_num,double nuskaitymo_failo_t, double sort_t, double
         cout<<std::to_string(lines_num) + " rameku isvedimo i faila laikas: "+std::to_string(ramiakai_output_t)<<"s."<<endl;
     }
 }
+void testas()
+{
+    Stud s;
+    assert(s.getVardas().empty());
+    assert(s.getVardas().empty());
+    assert(s.getEgz() == 0);
+
+    string name = "J";
+    string surname = "D";
+    int examResult = 8;
+
+
+    s.setVardas(name);
+    assert(s.getVardas() == name);
+
+    s.setPavarde(surname);
+    assert(s.getPavarde() == surname);
+
+    s.setEgz(examResult);
+    assert(s.getEgz() == examResult);
+    Stud originalus;
+
+    originalus.setVardas(name);
+    originalus.setPavarde(surname);
+    originalus.setEgz(7);
+    Stud kopija = originalus;
+    assert(kopija.getVardas() == "J");
+    assert(kopija.getPavarde() == "D");
+    assert(kopija.getEgz() == 7);
+    testavimoRezultatai(true, "kopijavimo konstruktorius");
+    Stud originalus2;
+    originalus2.setVardas(name);
+    originalus2.setPavarde(surname);
+    originalus2.setEgz(10);
+    Stud kopija2;
+    kopija2 = originalus2;
+    assert(kopija2.getVardas() == "J");
+    assert(kopija2.getPavarde() == "D");
+    assert(kopija2.getEgz() == 10);
+    testavimoRezultatai(true, "kopijavimo assignmentas");
+    {
+        Stud tempStud;
+        tempStud.setVardas("Test");
+        tempStud.setPavarde("Student");
+        tempStud.setEgz(5);
+    }
+    testavimoRezultatai(true, "destruktorius");
+}
+
+void testavimoRezultatai(bool success, const std::string& testName){
+    if (success) {
+        std::cout << "Test '" << testName << "' passed" << std::endl;
+    } else {
+        std::cerr << "Test '" << testName << "' failed" << std::endl;
+    }
+}
+
 
