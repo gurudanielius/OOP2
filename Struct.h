@@ -69,7 +69,7 @@ public:
 
     void ived(Stud & Lok);
     void vidurkis(Stud & Lok);
-    void test()
+    void testas();
     void output(list <Stud> & Lok);
 	void val(Stud & Lok);
     void mediana(Stud & Lok);
